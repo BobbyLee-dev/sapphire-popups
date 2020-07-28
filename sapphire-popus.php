@@ -62,23 +62,6 @@ if ( is_admin() ) {
 require_once plugin_dir_path( __FILE__ ) . 'includes/core-functions.php';
 
 
-
-// default plugin options
-// function sapphire_popups_options_default() {
-
-// 	return array(
-// 		'custom_url'     => 'https://wordpress.org/.',
-// 		// 'custom_title'   => 'Powered by WordPress.',
-// 		'custom_style'   => 'disable',
-// 		'custom_message' => '<p class="custom-message">My. custom message</p>',
-// 		// 'custom_footer'  => 'Special message for users.',
-// 		'custom_toolbar' => false,
-// 		'custom_scheme'  => 'default',
-// 	);
-
-// }
-
-
 // remove options on uninstall
 function myplugin_on_uninstall() {
 
