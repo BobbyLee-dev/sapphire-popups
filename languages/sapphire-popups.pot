@@ -1,0 +1,61 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Sapphire Popups\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-27 23:29+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.4.0; wp-5.4.2"
+
+#. Description of the plugin
+msgid "A simple yet clever solution to popups and flyouts."
+msgstr ""
+
+#. Author of the plugin
+msgid "Bobby Lee"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://github.com/runningCoder81/sapphire-popups"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://therunningcoder.com/"
+msgstr ""
+
+#: admin/settings-callbacks.php:52
+msgid "None Selected"
+msgstr ""
+
+#: admin/settings-register.php:41
+msgid "Popup Settings"
+msgstr ""
+
+#. Name of the plugin
+#: admin/admin-page.php:19
+msgid "Sapphire Popups"
+msgstr ""
+
+#: admin/admin-page.php:30
+msgid "Sapphire Popups And Flyouts"
+msgstr ""
+
+#: admin/admin-page.php:18
+msgid "Sapphire Popups Dashboard"
+msgstr ""
+
+#: admin/settings-register.php:51 admin/settings-register.php:55
+msgid "Select Popup"
+msgstr ""
+
+#: admin/admin-page.php:31
+msgid "Settings"
+msgstr ""
