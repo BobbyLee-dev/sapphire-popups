@@ -46,7 +46,11 @@ add_action( 'plugins_loaded', 'sapphire_popups_load_textdomain' );
 
 
 
-// include plugin dependencies: admin only
+/**
+ * Include admin dependencies.
+ * 
+ * @since 1.0.0
+ */
 if ( is_admin() ) {
 
 	require_once plugin_dir_path( __FILE__ ) . 'admin/admin-page.php';

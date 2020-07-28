@@ -21,7 +21,8 @@ function sapphire_popups_add_popup_script() {
 		$popup = get_page_by_title( $options['select_popup'], OBJECT, 'sapphire_popups' );
 		$popupContent = __(wp_kses_post( $popup->post_content ), 'sapphire-popups');
 
-		echo '<script>var popupAsAString = ' . json_encode( $popupContent, JSON_HEX_TAG ) . ';</script>';
+		// Add to page for seo, but hide by default.
+		echo '<div class="sapphire-popup" style="display: none;">' . $popupContent . '</div>';
 		
 		wp_enqueue_style( 'sapphire_popups', plugin_dir_url( dirname( __FILE__ ) ) . 'public/css/sapphire-popup.css', array(), null, 'screen' );
 		wp_enqueue_script( 'sapphire_popups', plugin_dir_url( dirname( __FILE__ ) ) . 'public/js/sapphire-popup.js', array(), null, true );
@@ -30,4 +31,5 @@ function sapphire_popups_add_popup_script() {
 	}
 	
 }
-add_action( 'wp_enqueue_scripts', 'sapphire_popups_add_popup_script' );
+// add_action( 'wp_enqueue_scripts', 'sapphire_popups_add_popup_script' );
+add_action( 'the_content', 'sapphire_popups_add_popup_script' );
