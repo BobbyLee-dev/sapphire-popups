@@ -52,22 +52,17 @@ if ( is_admin() ) {
 	require_once plugin_dir_path( __FILE__ ) . 'admin/admin-page.php';
 	require_once plugin_dir_path( __FILE__ ) . 'admin/settings-register.php';
 	require_once plugin_dir_path( __FILE__ ) . 'admin/settings-callbacks.php';
+	require_once plugin_dir_path( __FILE__ ) . 'admin/post-types/register-custom-post-types.php';
 	
 }
 
-	require_once plugin_dir_path( __FILE__ ) . 'admin/post-types/register-custom-post-types.php';
 
 
-// include plugin dependencies: admin and public
+
+/**
+ * Include admin and public dependencies.
+ * 
+ * @since 1.0.0
+ */
 require_once plugin_dir_path( __FILE__ ) . 'includes/core-functions.php';
 
-
-// remove options on uninstall
-function myplugin_on_uninstall() {
-
-	if ( ! current_user_can( 'activate_plugins' ) ) return;
-
-	delete_option( 'sapphire_popups' );
-
-}
-register_uninstall_hook( __FILE__, 'myplugin_on_uninstall' );
