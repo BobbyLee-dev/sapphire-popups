@@ -92,10 +92,10 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/core-functions.php';
  * @since 1.0.0
  */
 function sapphire_popups_add_settings_link( $links ) {
-    $settings_link = '<a href="admin.php?page=sapphire_popups_settings">' . __( 'Settings', 'sapphire_popups' ) . '</a>';
+    $settings_link = '<a href="admin.php?page=sapphire_popups_settings">' . esc_html__( 'Settings', 'sapphire_popups' ) . '</a>';
     array_push( $links, $settings_link );
   	return $links;
 }
-echo plugin_basename( __FILE__ );
+
 $filter_name = "plugin_action_links_" . plugin_basename( __FILE__ );
 add_filter( $filter_name, 'sapphire_popups_add_settings_link' );

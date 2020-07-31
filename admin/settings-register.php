@@ -30,15 +30,6 @@ function sapphire_popups_register_settings() {
 		'sapphire_popups_options'
 	);
 
-	
-	// Dashboard section
-	// add_settings_section(
-	// 	'sapphire_popups_dashboard_section_about',
-	// 	'About',
-	// 	'sapphire_popups_callback_section_dashbaord_about',
-	// 	'sapphire_popups_dashboard'
-	// );
-
 
   // Popups section.
 	add_settings_section(
@@ -57,7 +48,34 @@ function sapphire_popups_register_settings() {
 		'sapphire_popups_callback_field_select',
 		'sapphire_popups_settings',
 		'sapphire_popups_section_popups',
-		[ 'id' => 'select_popup', 'label' => esc_html__('Popup to be used.', 'sapphire-popus'), 'default' => esc_html__('Select Popup', 'sapphire-popups') ]
+		[ 
+			'cpt' 		=> true, // custom post type.
+			'id' 			=> 'select_popup', 
+			'label' 	=> esc_html__('Popup to be used.', 'sapphire-popus'), 
+			'default' => esc_html__('Select Popup', 'sapphire-popups') 
+		]
+	);
+
+
+
+	// Select popup behavior field.
+	add_settings_field(
+		'select_popup_behavior',
+		esc_html__('Select Behavior', 'sapphire-popups'),
+		'sapphire_popups_callback_field_select',
+		'sapphire_popups_settings',
+		'sapphire_popups_section_popups',
+		[ 
+			'cpt' => false, // not custom post type.
+			'id' => 'select_popup_behavior', 
+			'label' => esc_html__('How often to show.', 
+			'sapphire-popus'), 
+			'options' => array(
+				'default' => esc_html__('Default', 'sapphire-popups'),
+				'show_once' => esc_html__('Show Once', 'sapphire-popups')
+			),
+			'default' => esc_html__('Default', 'sapphire-popups'),
+		]
 	);
 
 	

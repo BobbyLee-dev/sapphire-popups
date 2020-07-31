@@ -26,16 +26,18 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 function sapphire_popups_add_popup_script() {
 	
-	$options = get_option( 'sapphire_popups_options', ['select_popup' => 'Default'] );
+	$options = get_option( 'sapphire_popups_options', '' );
 
-	
 	if ( isset( $options['select_popup'] ) && ! empty( $options['select_popup'] ) && 'none_selected' != $options['select_popup'] ) {
 		
+		// Get the popup from the custom post type - popups.
 		$popup = get_page_by_title( $options['select_popup'], OBJECT, 'sapphire_popups' );
-		$popupContent = __(wp_kses_post( $popup->post_content ), 'sapphire-popups');
+		$popupContent = __( wp_kses_post( $popup->post_content ), 'sapphire-popups' );
+
+		$popupBehavior = isset( $options['select_popup_behavior'] ) ? $options['select_popup_behavior'] : '';
 
 		// Add to page for seo, but hide by default.
-		echo '<div class="sapphire-popup" style="display: none;">' . $popupContent . '</div>';
+		echo '<div data-behavior="' . $popupBehavior . '" class="sapphire-popup" style="display: none;">' . $popupContent . '</div>';
 		
 		wp_enqueue_style( 'sapphire_popups', plugin_dir_url( dirname( __FILE__ ) ) . 'public/css/sapphire-popup.css', array(), null, 'screen' );
 		wp_enqueue_script( 'sapphire_popups', plugin_dir_url( dirname( __FILE__ ) ) . 'public/js/sapphire-popup.js', array(), null, true );

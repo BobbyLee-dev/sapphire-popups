@@ -53,7 +53,7 @@ function sapphire_popups_callback_section_popups() {
  */
 function sapphire_popups_options_select($id) {
 
-	// echo $id;
+	
 	if(isset($id)) {
 		
 		// WP_Query arguments
@@ -91,14 +91,25 @@ function sapphire_popups_options_select($id) {
  */
 function sapphire_popups_callback_field_select( $args ) {
 
-	$options = get_option( 'sapphire_popups_options', [$args['id'] => $args['default']] );
+	$dbOptions = get_option( 'sapphire_popups_options', [$args['id'] => $args['default']] );
 	
-	$id    = isset( $args['id'] )    ? $args['id']    : '';
-	$label = isset( $args['label'] ) ? $args['label'] : '';
+	$id      = isset( $args['id'] )    	 ? $args['id']      : '';
+	$isCpt   = isset( $args['cpt'] )     ? $args['cpt']     : '';
+
+	// Options from register setting
+	$options = isset( $args['options'] ) ? $args['options'] : false;
+	$label   = isset( $args['label'] )   ? $args['label'] 	: '';
 	
-	$selected_option = isset( $options[$id] ) ? sanitize_text_field( $options[$id] ) : '';
+	$selected_option = isset( $dbOptions[$id] ) ? sanitize_text_field( $dbOptions[$id] ) : '';
 	
-	$select_options = sapphire_popups_options_select($id);
+	if( true === $isCpt ) {
+		$select_options = sapphire_popups_options_select($id);
+	} elseif( false != $options ) {
+		$select_options = $options;
+	} else {
+		$select_options = array('no_options' => 'No Options');
+	}
+	
 	
 	echo '<select id="sapphire_popups_options_'. $id .'" name="sapphire_popups_options['. $id .']">';
 	
