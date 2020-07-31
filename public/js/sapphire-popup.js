@@ -3,4 +3,4 @@
 
 // goal send this file the content from the custom post type - popups
 // document.getElementById('rememberme').checked = true;
-console.log(popupAsAString);
+// console.log(popupAsAString);

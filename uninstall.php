@@ -1,15 +1,12 @@
 <?php
-/* 
-	
-	uninstall.php
-	
-	- fires when plugin is uninstalled via the Plugins screen
-	
-*/
 
 
 
-// exit if uninstall constant is not defined
+/**
+ * Exit if uninstall constant is not defined.
+ * 
+ * @since 1.0.0
+ */
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	
 	exit;
@@ -18,5 +15,9 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 
 
 
-// delete the plugin options
+/**
+ * Remove plugin options from database when plugin in uninstalled via the Plugins screen.
+ * 
+ * @since 1.0.0
+ */
 delete_option( 'sapphire_popups_options' );

@@ -2,7 +2,13 @@
 
 
 
-// disable direct file access
+/**
+ * Disable direct file access.
+ * 
+ * Exit if file is called directly
+ * 
+ * @since 1.0.0
+ */
 if ( ! defined( 'ABSPATH' ) ) {
 
 	exit;
@@ -11,13 +17,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 
-// register plugin settings
+/**
+ * Register Sapphire Popup settings.
+ *
+ * @since 1.0.0
+ */
 function sapphire_popups_register_settings() {
-
-	// register_setting(
-	// 	'sapphire_popups_dashbaord',
-	// 	'sapphire_popups_dashbaord'
-	// );
 
 
 	register_setting(
@@ -35,7 +40,7 @@ function sapphire_popups_register_settings() {
 	// );
 
 
-
+  // Popups section.
 	add_settings_section(
 		'sapphire_popups_section_popups',
 		esc_html__('Popup Settings', 'sapphire-popups'),
@@ -45,7 +50,7 @@ function sapphire_popups_register_settings() {
 
 
 
-
+  // Select popup field.
 	add_settings_field(
 		'select_popup',
 		esc_html__('Select Popup', 'sapphire-popups'),

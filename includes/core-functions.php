@@ -2,7 +2,13 @@
 
 
 
-// disable direct file access
+/**
+ * Disable direct file access.
+ * 
+ * Exit if file is called directly
+ * 
+ * @since 1.0.0
+ */
 if ( ! defined( 'ABSPATH' ) ) {
 	
 	exit;
@@ -10,7 +16,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
+
 // Add popup script
+/**
+ * Enqueue css and js if a popup has been selected.
+ *
+ * @return void
+ * @since 1.0.0
+ */
 function sapphire_popups_add_popup_script() {
 	
 	$options = get_option( 'sapphire_popups_options', ['select_popup' => 'Default'] );

@@ -1,31 +1,62 @@
 <?php
 
+
+/**
+ * Register custom post types for Popups and Flyouts.
+ * 
+ * Does not create front end pages.
+ *
+ * @since 1.0.0
+ */
 function sapphire_popups_register_popups() {
 
-  $labels = array( 
-    'name' => esc_html__( 'Popups', 'sapphire_popups' ),
-    'singular_name' => esc_html__( 'Popup', 'sapphire_popups' ),
-    'archives' => esc_html__( 'Popups', 'sapphire_popups' ),
-    'add_new' => esc_html__( 'Add Popup', 'sapphire_popups' ),
-    'add_new_item' => esc_html__( 'Add Popup', 'sapphire_popups' ),
-  );
+	$popupLabels = array( 
+		'name'          => esc_html__( 'Popups', 'sapphire_popups' ),
+		'singular_name' => esc_html__( 'Popup', 'sapphire_popups' ),
+		'archives'      => esc_html__( 'Popups', 'sapphire_popups' ),
+		'add_new'       => esc_html__( 'Add Popup', 'sapphire_popups' ),
+		'add_new_item'  => esc_html__( 'Add Popup', 'sapphire_popups' ),
+	);
 
-  $args = array(
-    'labels' => $labels,
-    'public' => true,
-    'show_in_menu' => 'sapphire_popups_settings',
-    // 'rewrite' => array( 'has_front' => false ),
-    // 'menu_icon' => 'dashicons-building',
-    'supports' => array( 'title', 'editor' ),
-    'show_in_rest' => true,
-    'has_archive'         => false,
+	$popupArgs = array(
+		'labels'              => $popupLabels,
+		'public'              => true,
+		'show_in_menu'        => 'sapphire_popups_settings',
+		'supports'            => array( 'title', 'editor' ),
+		'show_in_rest'        => true,
+		'pages' 					    => false,
+		'has_archive'			    => false,
+		'show_in_nav_menus'	  => false,
 		'exclude_from_search' => true,
 		'publicly_queryable'  => false
-    // 'rest_base' => plugin_dir_path( __FILE__ ),
-  );
+	);
 
 
-  register_post_type( 'sapphire_popups', $args );
+	$flyoutLabels = array( 
+		'name'          => esc_html__( 'Flyouts', 'sapphire_popups' ),
+		'singular_name' => esc_html__( 'Flyout', 'sapphire_popups' ),
+		'archives'      => esc_html__( 'Flyouts', 'sapphire_popups' ),
+		'add_new'       => esc_html__( 'Add Flyout', 'sapphire_popups' ),
+		'add_new_item'  => esc_html__( 'Add Flyout', 'sapphire_popups' ),
+	);
+
+	$flyoutArgs = array(
+		'labels'              => $flyoutLabels,
+		'description'		      => 'Sapphire Popups - popups',
+		'public'              => true,
+		'show_in_menu'        => 'sapphire_popups_settings',
+		'supports'            => array( 'title', 'editor' ),
+		'show_in_rest'        => true,
+		'pages' 					    => false,
+		'has_archive'			    => false,
+		'show_in_nav_menus'	  => false,
+		'exclude_from_search' => true,
+		'publicly_queryable'  => false
+	);
+
+
+	register_post_type( 'sapphire_popups', $popupArgs );
+	register_post_type( 'sapphire_flyouts', $flyoutArgs );
 
 }
 
