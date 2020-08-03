@@ -78,6 +78,22 @@ function sapphire_popups_register_settings() {
 		]
 	);
 
+
+
+	// Exclude Title checkbox field.
+	add_settings_field(
+		'exclude_popup_title',
+		esc_html__('Exclude Title', 'sapphire-popups'),
+		'sapphire_popups_field_checkbox',
+		'sapphire_popups_settings',
+		'sapphire_popups_section_popups',
+		[ 
+			'id' => 'exclude_popup_title', 
+			'label' => esc_html__('Exclude Popup title from popup.', 'sapphire-popus'),
+			'default' => false,
+		]
+	);
+
 	
 
 }

@@ -20,15 +20,16 @@ function sapphire_popups_register_popups() {
 
 	$popupArgs = array(
 		'labels'              => $popupLabels,
+		'description'		      => 'Sapphire Popups - popups',
 		'public'              => true,
+		'exclude_from_search' => true,
+		'publicly_queryable'  => false,
 		'show_in_menu'        => 'sapphire_popups_settings',
-		'supports'            => array( 'title', 'editor' ),
+		'show_in_nav_menus'	  => false,
+		'supports'            => array( 'title', 'editor', 'thumb' => false ),
 		'show_in_rest'        => true,
 		'pages' 					    => false,
 		'has_archive'			    => false,
-		'show_in_nav_menus'	  => false,
-		'exclude_from_search' => true,
-		'publicly_queryable'  => false
 	);
 
 
@@ -42,16 +43,16 @@ function sapphire_popups_register_popups() {
 
 	$flyoutArgs = array(
 		'labels'              => $flyoutLabels,
-		'description'		      => 'Sapphire Popups - popups',
+		'description'		      => 'Sapphire Flyouts',
 		'public'              => true,
 		'show_in_menu'        => 'sapphire_popups_settings',
-		'supports'            => array( 'title', 'editor' ),
+		'supports'            => array( 'title', 'editor', 'thumb' => false ),
 		'show_in_rest'        => true,
 		'pages' 					    => false,
 		'has_archive'			    => false,
 		'show_in_nav_menus'	  => false,
 		'exclude_from_search' => true,
-		'publicly_queryable'  => false
+		'publicly_queryable'  => false,
 	);
 
 

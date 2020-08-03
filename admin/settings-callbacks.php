@@ -127,6 +127,24 @@ function sapphire_popups_callback_field_select( $args ) {
 
 
 
-
-
-
+/**
+ * Checbox field.
+ * 
+ * Echos checkbox field to settings page.
+ *
+ * @param array $args
+ * @since 1.0.0
+ */
+function sapphire_popups_field_checkbox( $args ) {
+	
+	$options = get_option( 'sapphire_popups_options', [$args['id'] => $args['default']] );
+	
+	$id    = isset( $args['id'] )    ? $args['id']    : '';
+	$label = isset( $args['label'] ) ? $args['label'] : '';
+	
+	$checked = isset( $options[$id] ) ? checked( $options[$id], 1, false ) : '';
+	
+	echo '<input id="sapphire_popups_options_'. $id .'" name="sapphire_popups_options['. $id .']" type="checkbox" value="1"'. $checked .'> ';
+	echo '<label for="sapphire_popups_options_'. $id .'">'. $label .'</label>';
+	
+}

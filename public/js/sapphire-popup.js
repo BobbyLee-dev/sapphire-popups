@@ -1,6 +1,10 @@
-/* MyPlugin - Custom Login JavaScript */
-// this get enqued from inludes/core functions
+/* 
+  Sapphire Popups - JavaScript - core logic. 
 
-// goal send this file the content from the custom post type - popups
-// document.getElementById('rememberme').checked = true;
-// console.log(popupAsAString);
+  Gets enqued from included/core-functions.php
+  - sapphire_popups_add_popup_script()
+*/
+
+const test = document.querySelector('.sapphire-popup');
+console.log(test);
+test.style.display = 'flex';
