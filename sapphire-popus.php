@@ -67,10 +67,11 @@ if ( is_admin() ) {
 	require_once plugin_dir_path( __FILE__ ) . 'admin/admin-page.php';
 	require_once plugin_dir_path( __FILE__ ) . 'admin/settings-register.php';
 	require_once plugin_dir_path( __FILE__ ) . 'admin/settings-callbacks.php';
-	require_once plugin_dir_path( __FILE__ ) . 'admin/post-types/register-custom-post-types.php';
 	
 }
 
+// Make sure this is outside of is_admin - will not allow posts to be saved!!
+require_once plugin_dir_path( __FILE__ ) . 'admin/post-types/register-custom-post-types.php';
 
 
 /**

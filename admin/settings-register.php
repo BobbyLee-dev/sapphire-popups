@@ -72,7 +72,8 @@ function sapphire_popups_register_settings() {
 			'sapphire-popus'), 
 			'options' => array(
 				'default' => esc_html__('Default', 'sapphire-popups'),
-				'show_once' => esc_html__('Show Once', 'sapphire-popups')
+				'show_once' => esc_html__('Show Once', 'sapphire-popups'),
+				'show_daily' => esc_html__('Show Daily', 'sapphire-popups')
 			),
 			'default' => esc_html__('Default', 'sapphire-popups'),
 		]

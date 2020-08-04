@@ -43,10 +43,12 @@ function sapphire_popups_add_popup_script() {
 		$popupTitle = isset( $options['exclude_popup_title'] ) ? '' : '<h2 class="popup-title">' . get_the_title( $popup->ID ) . '</h2>';
 		
 
-		// Add to page for seo, but hide by default.
-		echo  '<div data-behavior="' . $popupBehavior . '" class="sapphire-popup" style="display: none;">
-						<div class="sapphire-popup-content">' . $popupTitle . $popupContent . '</div>
-				  </div>';
+
+
+		$popupMarkup = '<div data-behavior="' . $popupBehavior . '" class="sapphire-popup"><div class="sapphire-popup-content">' . $popupTitle . $popupContent . '</div>';
+		
+		echo '<script>const sapphirePopup = ' . json_encode($popupMarkup) . '</script>';
+	
 		
 		wp_enqueue_style( 'sapphire_popups', plugin_dir_url( dirname( __FILE__ ) ) . 'public/css/sapphire-popup.css', array(), null, 'screen' );
 		wp_enqueue_script( 'sapphire_popups', plugin_dir_url( dirname( __FILE__ ) ) . 'public/js/sapphire-popup.js', array(), null, true );
@@ -55,5 +57,5 @@ function sapphire_popups_add_popup_script() {
 	}
 	
 }
-// add_action( 'wp_enqueue_scripts', 'sapphire_popups_add_popup_script' );
-add_action( 'the_content', 'sapphire_popups_add_popup_script' );
+add_action( 'wp_enqueue_scripts', 'sapphire_popups_add_popup_script' );
+// add_action( 'the_content', 'sapphire_popups_add_popup_script' );
