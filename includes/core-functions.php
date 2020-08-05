@@ -41,11 +41,11 @@ function sapphire_popups_add_popup_script() {
 
 		// See if the title will be excluded or included - default is included.
 		$popupTitle = isset( $options['exclude_popup_title'] ) ? '' : '<h2 class="popup-title">' . get_the_title( $popup->ID ) . '</h2>';
-		
+		// $popupID = title no spaces lowercase will use for cookie
 
 
 
-		$popupMarkup = '<div data-behavior="' . $popupBehavior . '" class="sapphire-popup"><div class="sapphire-popup-content">' . $popupTitle . $popupContent . '</div>';
+		$popupMarkup = '<div data-behavior="' . $popupBehavior . '" class="sapphire-popup"><div class="sapphire-popup-content">' . $popupTitle . $popupContent . '<button class="close-sapphire-popup" aria-label="Close Button"></button></div>';
 		
 		echo '<script>const sapphirePopup = ' . json_encode($popupMarkup) . '</script>';
 	

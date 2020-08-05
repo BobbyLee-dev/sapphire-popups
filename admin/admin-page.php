@@ -37,7 +37,7 @@ function sapphire_popups_add_menu() {
 		null
 	);
 	
-  // Submenu page
+	// Submenu page
 	add_submenu_page(
 		'sapphire_popups_settings',
 		esc_html__('Sapphire Popups And Flyouts', 'sapphire-popups'),

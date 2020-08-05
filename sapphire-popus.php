@@ -29,9 +29,9 @@ with this program. If not, visit: https://www.gnu.org/licenses/
 
 /**
  * Disable direct file access.
- * 
+ *
  * Exit if file is called directly
- * 
+ *
  * @since 1.0.0
  */
 if ( ! defined( 'ABSPATH' ) ) {
@@ -48,9 +48,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @since 1.0.0
  */
 function sapphire_popups_load_textdomain() {
-	
+
 	load_plugin_textdomain( 'sapphire-popups', false, plugin_dir_path( __FILE__ ) . 'languages/' );
-	
+
 }
 add_action( 'plugins_loaded', 'sapphire_popups_load_textdomain' );
 
@@ -58,34 +58,35 @@ add_action( 'plugins_loaded', 'sapphire_popups_load_textdomain' );
 
 /**
  * Include admin dependencies.
- * 
+ *
  * @since 1.0.0
  */
 if ( is_admin() ) {
 
-	
+
 	require_once plugin_dir_path( __FILE__ ) . 'admin/admin-page.php';
 	require_once plugin_dir_path( __FILE__ ) . 'admin/settings-register.php';
 	require_once plugin_dir_path( __FILE__ ) . 'admin/settings-callbacks.php';
-	
+
 }
 
-// Make sure this is outside of is_admin - will not allow posts to be saved!!
-require_once plugin_dir_path( __FILE__ ) . 'admin/post-types/register-custom-post-types.php';
+
 
 
 /**
  * Include admin and public dependencies.
- * 
+ *
  * @since 1.0.0
  */
 require_once plugin_dir_path( __FILE__ ) . 'includes/core-functions.php';
+// Make sure this is outside of is_admin - will not allow posts to be saved!!
+require_once plugin_dir_path( __FILE__ ) . 'admin/post-types/register-custom-post-types.php';
 
 
 
 /**
  * Add a link to the settings page from the plugins page.
- * 
+ *
  * Will be displayed after plugin in activated in the plugins page.
  *
  * @param array $links
@@ -93,9 +94,9 @@ require_once plugin_dir_path( __FILE__ ) . 'includes/core-functions.php';
  * @since 1.0.0
  */
 function sapphire_popups_add_settings_link( $links ) {
-    $settings_link = '<a href="admin.php?page=sapphire_popups_settings">' . esc_html__( 'Settings', 'sapphire_popups' ) . '</a>';
-    array_push( $links, $settings_link );
-  	return $links;
+		$settings_link = '<a href="admin.php?page=sapphire_popups_settings">' . esc_html__( 'Settings', 'sapphire_popups' ) . '</a>';
+		array_push( $links, $settings_link );
+		return $links;
 }
 
 $filter_name = "plugin_action_links_" . plugin_basename( __FILE__ );

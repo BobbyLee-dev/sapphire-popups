@@ -31,7 +31,7 @@ function sapphire_popups_register_settings() {
 	);
 
 
-  // Popups section.
+	// Popups section.
 	add_settings_section(
 		'sapphire_popups_section_popups',
 		esc_html__('Popup Settings', 'sapphire-popups'),
@@ -41,7 +41,7 @@ function sapphire_popups_register_settings() {
 
 
 
-  // Select popup field.
+	// Select popup field.
 	add_settings_field(
 		'select_popup',
 		esc_html__('Select Popup', 'sapphire-popups'),

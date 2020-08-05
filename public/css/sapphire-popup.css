@@ -1,28 +1,28 @@
 /* 
-  Sapphire Popups - CSS. 
+	Sapphire Popups - CSS. 
 
-  Gets enqued from included/core-functions.php
-  - sapphire_popups_add_popup_script()
+	Gets enqued from included/core-functions.php
+	- sapphire_popups_add_popup_script()
 */
 
 .sapphire-popup {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%!important;
-  height: 100%!important;
-  max-width: 100%!important;
-  max-height: 100%!important;
-  background-color: rgba(0, 0, 0, .7);
-  z-index: 999999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%!important;
+	height: 100%!important;
+	max-width: 100%!important;
+	max-height: 100%!important;
+	background-color: rgba(0, 0, 0, .7);
+	z-index: 999999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .sapphire-popup .sapphire-popup-content {
-  background-color: #fff;
-  padding: 20px;
+	background-color: #fff;
+	padding: 20px;
 }
