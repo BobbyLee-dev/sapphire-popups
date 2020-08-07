@@ -45,9 +45,9 @@ function sapphire_popups_add_popup_script() {
 
 
 
-		$popupMarkup = '<div data-behavior="' . $popupBehavior . '" class="sapphire-popup"><div class="sapphire-popup-content">' . $popupTitle . $popupContent . '<button class="close-sapphire-popup" aria-label="Close Button"></button></div>';
+		$popupMarkup = '<div data-behavior="' . $popupBehavior . '" class="sapphire-popup-content">' . $popupTitle . $popupContent . '<button class="close-sapphire-popup" aria-label="Close Button"></button></div>';
 		
-		echo '<script>const sapphirePopup = ' . json_encode($popupMarkup) . '</script>';
+		echo '<script>const sapphirePopupContent = ' . json_encode($popupMarkup) . '</script>';
 	
 		
 		wp_enqueue_style( 'sapphire_popups', plugin_dir_url( dirname( __FILE__ ) ) . 'public/css/sapphire-popup.css', array(), null, 'screen' );

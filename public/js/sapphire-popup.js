@@ -6,13 +6,23 @@
 */
 
 
-if (sapphirePopup) {
+
+if (sapphirePopupContent) {
 	(function () {
+
+				// Functions:
+		// - get popup behavior - data behavior
+		// - behavior check - check if has cookie - if so check if need to display popup.
+		// - set up cookie/create cookie - to be used when popup closed. 
+	
+	
+		// - in close event add cookie if needed.
+		//
 
 	/*----------  Helper Functions  ----------*/
 		
-	// Helper get element function
-		const get = function (selector) {
+		// Helper get element function
+		function get (selector) {
 			// console.log(document.querySelector(selector));
 			return document.querySelector(selector);
 		}
@@ -21,7 +31,7 @@ if (sapphirePopup) {
 		// getall
 
 		// Helper create markup function
-		const createMarkUp = function (elementType, classList, content) {
+		function createMarkUp (elementType, classList, content) {
 			const element = document.createElement(elementType);
 			if (classList.length > 0) {
 				element.classList = classList.join(' ');
@@ -35,22 +45,87 @@ if (sapphirePopup) {
 		
 	/*----------  End Helper Functions  ----------*/
 
-		// Function:
-		// - get popup behavior - data behavior
-		// - create cookie - indexdb - id - make 
-		// - check for cookie - index db
-		// - display popup
-		// - event listeners
-		// - add cookie
-		// 
+	
+	
+	/*----------  Display popup  ----------*/
+		function displayPopup () {
+			const sapphireBodyEl = get('body');
+			const sapphirePopup = createMarkUp('div', ['sapphire-popup'], sapphirePopupContent);
+			sapphireBodyEl.appendChild(sapphirePopup);
+		}
+	/*----------  End Display popup  ----------*/
+		
+	
+	
+	/*----------  Close Popup and Remove Event Listeners  ----------*/
+		function closeSapphirePopup () {
+			const sapphirePopupToClose = get('.sapphire-popup');
+			if (sapphirePopupToClose) {
+				sapphirePopupToClose.remove();
+			}
+		}
+	/*----------  End Close Popup and Remove Event Listeners  ----------*/
+		
+	
+	
+	/*----------  Event Listeners  ----------*/
+		function sapphirePopupAddEventListeners() {
+			
+			// Click Events
+			function sapphirePopupWindowClick(event) {
 
-	 
+				// Close Button
+				if (event.target.classList.contains('close-sapphire-popup')) {
+					closeSapphirePopup();
+					window.removeEventListener('click', sapphirePopupWindowClick, false);
+					return;
+				}
+				// End Close Button
 
-		const sapphireBodyEl = get('body');
-		let frag = document.createRange().createContextualFragment(sapphirePopup);
+				// Click outside of popup content
+				if (event.target.classList.contains('sapphire-popup')) {
+					closeSapphirePopup();
+					window.removeEventListener('click', sapphirePopupWindowClick, false);
+					return;
+				}
+				// End Click outside of popup content
 
-		sapphireBodyEl.appendChild(frag);
-		console.log(frag);
+				// Link click
+				if (event.target.href) {
+					closeSapphirePopup();
+					window.removeEventListener('click', sapphirePopupWindowClick, false);
+					return;
+				}
+				// End Link click
+
+			}
+			window.addEventListener('click', sapphirePopupWindowClick, false);
+			// End Click Events
+
+			// Key Press
+			function sapphireDocumentKeyPress (event) {
+					if(event.key === "Escape") {
+						closeSapphirePopup();
+						document.removeEventListener('keydown', sapphireDocumentKeyPress, false);
+						return;
+					}
+			}
+			document.addEventListener('keydown', sapphireDocumentKeyPress, false);
+			// End Key Press
+
+
+
+		}
+	/*----------  End Event Listeners  ----------*/
+	
+
+
+		displayPopup();
+		sapphirePopupAddEventListeners();
+
+  
+
+
 
 
 	})() // End IIFE - private scope.
