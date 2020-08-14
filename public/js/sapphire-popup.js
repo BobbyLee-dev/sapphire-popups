@@ -42,86 +42,54 @@ if (sapphirePopupContent) {
 		// End Helper create markup function
 
 	/*----------  End Helper Functions  ----------*/
-
-		
-	/*----------  Get Popup Behavior  ----------*/
-		function getSapphirePopupBehavior() {
-			// console.log(sapphirePopupContent.split(' ')[1].split('"')[1]);
-
-
-			// Default - returns -1 if no match was found.
-			if (sapphirePopupContent.search('data-sapphirePopupBehavior="default"') !== -1) {
-				return 'default';
-			}
-
-			// Show Once returns -1 if no match was found.
-			if (sapphirePopupContent.search('data-sapphirePopupBehavior="show_once"') !== -1) {
-				return 'show_once';
-			}
-
-			// Show Daily returns -1 if no match was found.
-			if (sapphirePopupContent.search('data-sapphirePopupBehavior="show_daily"') !== -1) {		
-				return 'show_daily';
-			}
-
-			return 'Popup Behavior not recconized.'
-			
-			
-		}
-	/*---------- End get Popup Behavior  ----------*/
 		
 		
 		
 	/*---------- Save popup behavior  ----------*/
 		function checkAndSetSapphirePopupBehavior(behavior) {
 		
-			// check for behavior for this paticular popup
+			// Get popup title-id: data-sapphirepopupid
 			const sapphirePopupID = sapphirePopupContent.split(' ')[1].split('"')[1];
 			const currentTime = new Date().getTime();
-			const popupExpiresDateFromLocalStorage = localStorage.getItem(sapphirePopupID);
+			const popupExpiresValue = localStorage.getItem(sapphirePopupID);
 
-			// If local storage popup exists and behavior === show_once don't show popup
-			if (popupExpiresDateFromLocalStorage && behavior === 'show_once') {
-				return false;
+			// Popup has been displayed before and behavior has been set.
+			if (popupExpiresValue) {
+
+				// Popup has been displayed and should not be shown again unless popup has been changed.
+				if (behavior === 'show_once') {
+					const previouslyDisplayedPopup = localStorage.getItem('sapphirePopupInLocalStorage');
+					// If popup has not been changed/updated.
+					if (previouslyDisplayedPopup === sapphirePopupContent) {
+						return false;
+					} else {
+						// Popup has been changed/updated
+
+						// Remove old popup from local Storage.
+						localStorage.removeItem('sapphirePopupInLocalStorage');
+						// Set new updated popup in local Storage.
+						localStorage.setItem('sapphirePopupInLocalStorage', sapphirePopupContent);
+						// Show new updated popup.
+						return true;
+					}
+				} // End if behavior === show_once.
+
+				// Show Daily
+				if (behavior === 'show_daily') { }
+
+
+			// Popup does has not been displayed yet.
+			} else {
+				// Show Once
+				if (behavior === 'show_once') {
+					localStorage.setItem(sapphirePopupID, 'show_once');
+					localStorage.setItem('sapphirePopupInLocalStorage', sapphirePopupContent);
+					return true;
+				}
+
+				// Show Daily
+				if (behavior === 'show_daily') {}
 			}
-
-			// If local storage popup does not exist and behavior === show_once set item in local storage and show popup.
-			if (!popupExpiresDateFromLocalStorage && behavior === 'show_once') {
-				localStorage.setItem(sapphirePopupID, 'show_once');
-				return true;
-			}
-
-			// If local storage popup exists and time has not expired return false - dont show popup.
-			if (popupExpiresDateFromLocalStorage && popupExpiresDateFromLocalStorage > currentTime && popupExpiresDateFromLocalStorage !== 'show_once') {
-				
-				return false;
-			} 
-
-			// If local storage popup exists, time has expired and behavoir == show_daily - remove local storage item re-add it with expires date, return true.
-			if (popupExpiresDateFromLocalStorage && behavior === 'show_daily') {
-			
-				
-				localStorage.removeItem(sapphirePopupID);
-				// Set new expires date to cuttentTime plus 1 day in ms.
-				// localStorage.setItem(sapphirePopupID, currentTime + 86400000);
-				localStorage.setItem(sapphirePopupID, currentTime + 10000);
-				return true;
-			}
-
-			if (!popupExpiresDateFromLocalStorage && behavior === 'show_daily') {
-
-
-				
-				// Set new expires date to cuttentTime plus 1 day in ms.
-				// localStorage.setItem(sapphirePopupID, currentTime + 86400000);
-				localStorage.setItem(sapphirePopupID, currentTime + 10000);
-				return true;
-			}
-
-			return false;
-			
-
-			
 			
 		}
 	/*---------- End Save popup behavior  ----------*/
@@ -214,10 +182,7 @@ if (sapphirePopupContent) {
 
 
 
-
-
-		// Check for behavior
-		const sapphirePopupBehavior = getSapphirePopupBehavior();
+		const sapphirePopupBehavior = sapphirePopupContent.split(' ')[2].split('"')[1];
 		
 
 		if (sapphirePopupBehavior === 'default') {
@@ -226,16 +191,11 @@ if (sapphirePopupContent) {
 
 
 		if (sapphirePopupBehavior !== 'default') {
-			
-			
-			
 			if (checkAndSetSapphirePopupBehavior(sapphirePopupBehavior)) {				
 				sapphirePopupInit();
 			} else {
 				// do nothing.
 			}
-			
-		
 		}
 		
 		// console.log('Sorry, popup behavior not recognized.');
