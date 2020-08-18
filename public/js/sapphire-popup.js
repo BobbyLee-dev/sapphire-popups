@@ -44,57 +44,6 @@ if (sapphirePopupContent) {
 	/*----------  End Helper Functions  ----------*/
 		
 		
-		
-	/*---------- Save popup behavior  ----------*/
-		function checkAndSetSapphirePopupBehavior(behavior) {
-		
-			// Get popup title-id: data-sapphirepopupid
-			const sapphirePopupID = sapphirePopupContent.split(' ')[1].split('"')[1];
-			const currentTime = new Date().getTime();
-			const popupExpiresValue = localStorage.getItem(sapphirePopupID);
-
-			// Popup has been displayed before and behavior has been set.
-			if (popupExpiresValue) {
-
-				// Popup has been displayed and should not be shown again unless popup has been changed.
-				if (behavior === 'show_once') {
-					const previouslyDisplayedPopup = localStorage.getItem('sapphirePopupInLocalStorage');
-					// If popup has not been changed/updated.
-					if (previouslyDisplayedPopup === sapphirePopupContent) {
-						return false;
-					} else {
-						// Popup has been changed/updated
-
-						// Remove old popup from local Storage.
-						localStorage.removeItem('sapphirePopupInLocalStorage');
-						// Set new updated popup in local Storage.
-						localStorage.setItem('sapphirePopupInLocalStorage', sapphirePopupContent);
-						// Show new updated popup.
-						return true;
-					}
-				} // End if behavior === show_once.
-
-				// Show Daily
-				if (behavior === 'show_daily') { }
-
-
-			// Popup does has not been displayed yet.
-			} else {
-				// Show Once
-				if (behavior === 'show_once') {
-					localStorage.setItem(sapphirePopupID, 'show_once');
-					localStorage.setItem('sapphirePopupInLocalStorage', sapphirePopupContent);
-					return true;
-				}
-
-				// Show Daily
-				if (behavior === 'show_daily') {}
-			}
-			
-		}
-	/*---------- End Save popup behavior  ----------*/
-		
-
 	
 	/*----------  Display popup  ----------*/
 		function displayPopup () {
@@ -168,10 +117,113 @@ if (sapphirePopupContent) {
 	/*----------  End Event Listeners  ----------*/
 		
 		
+	/*----------  Show Once logic  ----------*/
+		function sapphirePopupShowOnce(popupExpiresValue, sapphirePopupID, previouslyDisplayedPopup) {
+			if (popupExpiresValue) {
+
+				// Remove expires date.
+				localStorage.removeItem(sapphirePopupID);
+				// Add Expires date
+				localStorage.setItem(sapphirePopupID, 'never');
+					// Show new updated popup.
+				
+				// If popup has not been changed/updated - don't show popup.
+				if (previouslyDisplayedPopup === sapphirePopupContent) {
+					return false;
+				} else { // Popup has been changed/updated
+					// Remove old popup from local Storage.
+					localStorage.removeItem('sapphirePopupInLocalStorage');
+					// Set new updated popup in local Storage.
+					localStorage.setItem('sapphirePopupInLocalStorage', sapphirePopupContent);
+					
+					return true;
+				}
+			} else { // Popup does has not been displayed yet.
+			
+				// Remove expires date.
+				localStorage.removeItem(sapphirePopupID);
+				// Add Expires date
+				localStorage.setItem(sapphirePopupID, 'never');
+				localStorage.setItem('sapphirePopupInLocalStorage', sapphirePopupContent);
+				return true;
+
+			}
+
+		}
+	/*----------  End Show Once logic  ----------*/
+		
+		
+		
+	/*----------  Show Daily logic  ----------*/
+		function sapphirePopupShowDaily(popupExpiresValue, sapphirePopupID, previouslyDisplayedPopup) {
+			
+			const currentTimeInMs = new Date().getTime();
+			const oneDayInMs = 86400000;
+
+			if (popupExpiresValue) {
+
+				// If popup has been changed/updated or needs updated from show never - update values - show.
+				if (previouslyDisplayedPopup !== sapphirePopupContent || popupExpiresValue === 'never') {
+					
+					// Remove old popup from local Storage.
+					localStorage.removeItem('sapphirePopupInLocalStorage');
+					// Set new updated popup in local Storage.
+					localStorage.setItem('sapphirePopupInLocalStorage', sapphirePopupContent);
+					// Set new expires date - first remove old one.
+					localStorage.removeItem(sapphirePopupID);
+					// New Expires date.
+					localStorage.setItem(sapphirePopupID, currentTimeInMs + oneDayInMs);
+			
+					// Show new updated popup.
+					return true;
+				
+				}
+				
+				 // Check expires value with current time and show if expired
+				if (currentTimeInMs > popupExpiresValue) {
+				console.log('time');
+				
+					// Set new expires date - first remove old one.
+					localStorage.removeItem(sapphirePopupID);
+					// New Expires date.
+					localStorage.setItem(sapphirePopupID, currentTimeInMs + oneDayInMs);
+					return true;
+
+				} else {
+					return false;
+				}
+
+			} else { // Popup does has not been displayed yet.
+				
+				localStorage.setItem(sapphirePopupID, currentTimeInMs + oneDayInMs);
+				localStorage.setItem('sapphirePopupInLocalStorage', sapphirePopupContent);
+				return true;
+
+			}
+
+		}
+	/*----------  End Show Daily logic  ----------*/
 	
-	
-	
-	
+		
+		
+	/*---------- Save popup behavior  ----------*/
+		function checkAndSetSapphirePopupBehavior(behavior) {
+
+			// Get popup title-id: data-sapphirepopupid
+			const sapphirePopupID = sapphirePopupContent.split(' ')[1].split('"')[1];
+			const popupExpiresValue = localStorage.getItem(sapphirePopupID);
+			const previouslyDisplayedPopup = localStorage.getItem('sapphirePopupInLocalStorage');
+
+			if (behavior === 'show_once') {
+				return sapphirePopupShowOnce(popupExpiresValue, sapphirePopupID, previouslyDisplayedPopup);
+			}
+
+			if (behavior === 'show_daily') {
+				return sapphirePopupShowDaily(popupExpiresValue, sapphirePopupID, previouslyDisplayedPopup);
+			}
+			
+		}
+	/*---------- End Save popup behavior  ----------*/
 	
 	
 		// Init
@@ -198,7 +250,7 @@ if (sapphirePopupContent) {
 			}
 		}
 		
-		// console.log('Sorry, popup behavior not recognized.');
+		console.log('Sorry, popup behavior not recognized.');
 		
 
 
