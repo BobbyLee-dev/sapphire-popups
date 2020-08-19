@@ -1,27 +1,39 @@
 /* 
- Sapphire Popups - JavaScript. 
+  Sapphire Popups - JavaScript. 
 
-	Gets enqued from included/core-functions.php
-	- sapphire_popups_add_popup_script()
+	Gets enqued from included/core-functions.php.
+	- sapphire_popups_add_popup_script().
+
+	Helper Functions
+	 - get() - Simple element query selector.
+	 - createMarkUp() - Takes el type, classList, content - returns element/node.
+
+
+	displayPopup() - Appends popup to DOM.
+
+	closeSapphirePopup() - Removes popup from DOM.
+
+	sapphirePopupAddEventListeners() - Adds popup related events.
+	 - sapphirePopupWindowClick()
+	 - sapphireDocumentKeyPress()
+
+	sapphirePopupShowOnce() - Handles the behavior for displaying the popup once only.
+	sapphirePopupShowDaily() - Handles the behavior for displaying the popup once a day.
+
+	checkAndSetSapphirePopupBehavior() - Gets the behavior set in the popup settings - backend of WP.
+
+	sapphirePopupInit() - Displays popup and sets up event listeners.
 */
 
 
 
 if (sapphirePopupContent) {
+	
 	(function () {
-
-				// Functions:
-		// - get popup behavior - data behavior
-		// - behavior check - check if has cookie - if so check if need to display popup.
-		// - set up cookie/create cookie - to be used when popup closed. 
-	
-	
-		// - in close event add cookie if needed.
 
 	/*----------  End Helper Functions  ----------*/
 		// Helper get element function
 		function get(selector) {
-			// console.log(document.querySelector(selector));
 			return document.querySelector(selector);
 		}
 		// End Helper get element function
@@ -46,7 +58,7 @@ if (sapphirePopupContent) {
 		
 	
 	/*----------  Display popup  ----------*/
-		function displayPopup () {
+		function displayPopup() {
 			const sapphireBodyEl = get('body');
 			const sapphirePopup = createMarkUp('div', ['sapphire-popup'], sapphirePopupContent);
 			sapphireBodyEl.appendChild(sapphirePopup);
@@ -56,7 +68,7 @@ if (sapphirePopupContent) {
 	
 	
 	/*----------  Close Popup  ----------*/
-		function closeSapphirePopup () {
+		function closeSapphirePopup() {
 			const sapphirePopupToClose = get('.sapphire-popup');
 			if (sapphirePopupToClose) {
 				sapphirePopupToClose.remove();
@@ -181,7 +193,6 @@ if (sapphirePopupContent) {
 				
 				 // Check expires value with current time and show if expired
 				if (currentTimeInMs > popupExpiresValue) {
-				console.log('time');
 				
 					// Set new expires date - first remove old one.
 					localStorage.removeItem(sapphirePopupID);
@@ -250,7 +261,7 @@ if (sapphirePopupContent) {
 			}
 		}
 		
-		console.log('Sorry, popup behavior not recognized.');
+		
 		
 
 

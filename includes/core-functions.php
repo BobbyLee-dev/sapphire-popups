@@ -46,7 +46,7 @@ function sapphire_popups_add_popup_script() {
 
     // data-sapphirePopupID... must remain one space away from the opening div - being taken out with js via this postion.
 		$popupMarkup = '<div data-sapphirePopupID="sapphirePopup-' . $popup->ID . '" data-sapphirePopupBehavior="' . $popupBehavior . '" class="sapphire-popup-content">' . $popupTitle . $popupContent . '<button class="close-sapphire-popup" aria-label="Close Button"></button></div>';
-		
+
 		echo '<script>const sapphirePopupContent = ' . json_encode($popupMarkup) . '</script>';
 	
 		wp_enqueue_style( 'sapphire_popups', plugin_dir_url( dirname( __FILE__ ) ) . 'public/css/sapphire-popup.css', array(), null, 'screen' );

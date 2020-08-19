@@ -15,7 +15,7 @@
 	height: 100%!important;
 	max-width: 100%!important;
 	max-height: 100%!important;
-	background-color: rgba(0, 0, 0, .7);
+	background-color: rgba(0, 0, 0, .8);
 	z-index: 999999;
 	display: flex;
 	justify-content: center;
@@ -24,5 +24,51 @@
 
 .sapphire-popup .sapphire-popup-content {
 	background-color: #fff;
-	padding: 20px;
+	padding: 60px 10px 10px;
+	position: relative;
+	width: 1000px;
+	max-width: 90%;
+	max-height: 90%;
+	overflow-y: scroll;
+}
+
+@media (min-width: 768px) {
+	.sapphire-popup .sapphire-popup-content {
+		padding: 50px 20px 20px;
+	}	
+}
+
+.sapphire-popup .sapphire-popup-content .popup-title {
+	margin-top: 0;
+	text-align: center;
+}
+
+.sapphire-popup .close-sapphire-popup {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: #191919;
+	border: none;
+	padding: 22px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.sapphire-popup .close-sapphire-popup:after {
+    content: '';
+    height: 24px;
+    border-left: 2px solid #fff;
+    position: absolute;
+    transform: rotate(45deg);
+    left: 22px;
+}
+
+.sapphire-popup .close-sapphire-popup:before {
+    content: '';
+    height: 24px;
+    border-left: 2px solid #fff;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 22px;
 }
