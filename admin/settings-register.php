@@ -51,7 +51,7 @@ function sapphire_popups_register_settings() {
 		[ 
 			'cpt' 		=> true, // custom post type.
 			'id' 			=> 'select_popup', 
-			'label' 	=> esc_html__('Popup to be used.', 'sapphire-popus'), 
+			'label' 	=> '<a href="edit.php?post_type=sapphire_popups">' . esc_html__('Manage Popups', 'sapphire-popus') . '</a>', 
 			'default' => esc_html__('Select Popup', 'sapphire-popups') 
 		]
 	);
@@ -72,8 +72,8 @@ function sapphire_popups_register_settings() {
 			'sapphire-popus'), 
 			'options' => array(
 				'default' => esc_html__('Default', 'sapphire-popups'),
+				'show_daily' => esc_html__('Show Daily', 'sapphire-popups'),
 				'show_once' => esc_html__('Show Once', 'sapphire-popups'),
-				'show_daily' => esc_html__('Show Daily', 'sapphire-popups')
 			),
 			'default' => esc_html__('Default', 'sapphire-popups'),
 		]
@@ -90,7 +90,7 @@ function sapphire_popups_register_settings() {
 		'sapphire_popups_section_popups',
 		[ 
 			'id' => 'exclude_popup_title', 
-			'label' => esc_html__('Exclude Popup title from popup.', 'sapphire-popus'),
+			'label' => esc_html__('Exclude Popup Title from popup.', 'sapphire-popus'),
 			'default' => false,
 		]
 	);

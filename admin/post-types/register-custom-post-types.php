@@ -2,7 +2,7 @@
 
 
 /**
- * Register custom post types for Popups and Flyouts.
+ * Register custom post types for Popups.
  * 
  * Does not create front end pages.
  *

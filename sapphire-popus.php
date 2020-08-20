@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Sapphire Popups
-Description: A light weight yet powerful solution for popups and flyouts.
+Description: A simple yet powerful solution for popups.
 Plugin URI:  https://github.com/runningCoder81/sapphire-popups
 Author:      Bobby Lee
 Author URI:  https://therunningcoder.com/
