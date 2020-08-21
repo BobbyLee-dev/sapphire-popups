@@ -1,6 +1,7 @@
 === Sapphire Popups ===
 Tags: Popups, easy to use, no cookies, classic editor, Gutenberg
 Tested up to: 5.5
+Stable tag: trunk
 Plugin URI:  https://github.com/runningCoder81/sapphire-popups
 Author:      Bobby Lee
 Author URI:  https://therunningcoder.com/
