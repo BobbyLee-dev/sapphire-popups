@@ -1,17 +1,19 @@
 === Sapphire Popups ===
-Tags: Popups, easy to use, no cookies, classic editor, Gutenberg
+Contributors: runningCoder81
+Tags:         Popups, easy to use, no cookies, classic editor, Gutenberg
 Tested up to: 5.5
-Stable tag: trunk
-Plugin URI:  https://github.com/runningCoder81/sapphire-popups
-Author:      Bobby Lee
-Author URI:  https://therunningcoder.com/
-Version:     1.0
-Text Domain: sapphire-popups
-Domain Path: /languages
-License:     GPL v2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.txt
+Requires PHP: 5.6
+Stable tag:   trunk
+Plugin URI:   https://github.com/runningCoder81/sapphire-popups
+Author:       Bobby Lee
+Author URI:   https://therunningcoder.com/
+Version:      1.0
+Text Domain:  sapphire-popups
+Domain Path:  /languages
+License:      GPLv3
+License URI:  http://www.gnu.org/licenses/gpl-3.0.html
 
-A simple yet powerful plugin that creates popups.
+A simple way to create popups.
 
 == Description ==
 
@@ -49,7 +51,7 @@ The Default Behavior will display the popup on every page load.
 
 == Screenshots ==
 
-1. Sapphire Popups settings page. Select a popup, behavior, weather to exclude the Popup Title and that's it!
+1. Sapphire Popups settings page. Select a popup, the behavior, and if you want to exclude the Popup Title - that's it!
 2. Managing popups is easy.
 
 == Changelog ==

@@ -1,0 +1,2 @@
+= 1.0.0: August 30th, 2020 =
+* Created version 1.
