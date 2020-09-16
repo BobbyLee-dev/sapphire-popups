@@ -22,9 +22,9 @@ if ( ! defined( 'ABSPATH' ) ) {
  * 
  * @since 1.0.0
  */
-function sapphire_popups_callback_section_dashbaord_about() {
+function sapphire_popups_callback_section_dashboard_about() {
 	
-	echo '<p>' . esc_html__('All about this plugin maybe some meta data...', 'sapphire_popus') . '</p>';
+	echo '<p>' . esc_html__( 'All about this plugin maybe some meta data...', 'sapphire-popups' ) . '</p>';
 
 }
 
@@ -38,7 +38,7 @@ function sapphire_popups_callback_section_dashbaord_about() {
  */
 function sapphire_popups_callback_section_popups() {
 	
-	echo '<p>' . esc_html__('These settings enable you to select a popup and customize it\'s behavior.', 'sapphire_popus') .'</p>';
+	echo '<p>' . esc_html__( 'These settings enable you to select a popup and customize it\'s behavior.', 'sapphire-popups' ) .'</p>';
 
 }
 
@@ -67,10 +67,10 @@ function sapphire_popups_options_select($id) {
 
 		// The Query
 		$popupsQuery = new WP_Query( $args );
-		$popupsNamesAndValues = array('none_selected' => esc_html__('None Selected', 'sapphire-popups'));
+		$popupsNamesAndValues = array('none_selected' => esc_html__( 'None Selected', 'sapphire-popups' ) );
 
 		while ( $popupsQuery->have_posts() ) : $popupsQuery->the_post(); 
-		$popupsNamesAndValues[strtolower(get_the_title())] = esc_html__(get_the_title(), 'sapphire-popus');
+			$popupsNamesAndValues[ strtolower( esc_html__(get_the_title() ) ) ] = esc_html__( get_the_title(), 'sapphire-popups' );
 		endwhile;
 
 		return $popupsNamesAndValues;
@@ -91,7 +91,7 @@ function sapphire_popups_options_select($id) {
  */
 function sapphire_popups_callback_field_select( $args ) {
 
-	$dbOptions = get_option( 'sapphire_popups_options', [$args['id'] => $args['default']] );
+	$dbOptions = get_option( 'sapphire_popups_options', [ $args['id'] => $args['default'] ] );
 	
 	$id      = isset( $args['id'] )    	 ? $args['id']      : '';
 	$isCpt   = isset( $args['cpt'] )     ? $args['cpt']     : '';
@@ -117,11 +117,11 @@ function sapphire_popups_callback_field_select( $args ) {
 		
 		$selected = selected( $selected_option === $value, true, false );
 		
-		echo '<option value="'. $value .'"'. $selected .'>'. $option .'</option>';
+		echo '<option value="'. $value .'"'. $selected .'>'. esc_html__( $option, 'sapphire-popups' ) .'</option>';
 		
 	}
 	
-	echo '</select> <label for="sapphire_popups_options_'. $id .'">'. $label .'</label>';
+	echo '</select> <label for="sapphire_popups_options_'. $id .'">'. wp_kses_post( __( $label, 'sapphire-popups' ) ) .'</label>';
 	
 }
 
