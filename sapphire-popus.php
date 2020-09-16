@@ -63,7 +63,6 @@ add_action( 'plugins_loaded', 'sapphire_popups_load_textdomain' );
  */
 if ( is_admin() ) {
 
-
 	require_once plugin_dir_path( __FILE__ ) . 'admin/admin-page.php';
 	require_once plugin_dir_path( __FILE__ ) . 'admin/settings-register.php';
 	require_once plugin_dir_path( __FILE__ ) . 'admin/settings-callbacks.php';
@@ -101,3 +100,30 @@ function sapphire_popups_add_settings_link( $links ) {
 
 $filter_name = "plugin_action_links_" . plugin_basename( __FILE__ );
 add_filter( $filter_name, 'sapphire_popups_add_settings_link' );
+
+
+
+/**
+ * Add iFrame to allowed wp_kses_post tags
+ *
+ * @param array  $tags Allowed tags, attributes, and/or entities.
+ * @param string $context Context to judge allowed tags by. Allowed values are 'post'.
+ *
+ * @return array
+ */
+function custom_wpkses_post_tags( $tags, $context ) {
+
+	if ( 'post' === $context ) {
+		$tags['iframe'] = array(
+			'src'             => true,
+			'height'          => true,
+			'width'           => true,
+			'frameborder'     => true,
+			'allowfullscreen' => true,
+		);
+	}
+
+	return $tags;
+}
+
+add_filter( 'wp_kses_allowed_html', 'custom_wpkses_post_tags', 10, 2 );
