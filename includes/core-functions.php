@@ -34,10 +34,10 @@ function sapphire_popups_add_popup_script() {
 		
 		// Get the popup from the custom post type - popups.
 		$popup = get_page_by_title( $options['select_popup'], OBJECT, 'sapphire_popups' );
-		$popupContent = __( apply_filters( 'the_content',  wp_kses_post($popup->post_content) ), 'sapphire-popups' );
+		$popupContent = __( apply_filters( 'the_content',  $popup->post_content ), 'sapphire-popups' );
 
 		// Get the popup behavior from the DB.
-		$popupBehavior = isset( $options['select_popup_behavior'] ) ? $options['select_popup_behavior'] : '';
+		$popupBehavior = isset( $options['select_popup_behavior'] ) ? esc_html__( wp_kses_post($options['select_popup_behavior']), 'sapphire-popups' ) : '';
 
 		// See if the title will be excluded or included - default is included.
 		$popupTitle = isset( $options['exclude_popup_title'] ) ? '' : '<h2 class="popup-title">' . get_the_title( $popup->ID ) . '</h2>';
