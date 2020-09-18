@@ -41,62 +41,112 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-
 /**
- * Load text domain for languages translation.
+ * The core plugin class.
  *
- * @since 1.0.0
+ * This is used to define internationalization, admin-specific hooks, and
+ * public-facing site hooks.
+ *
+ * @since      1.1.0
  */
-function sapphire_popups_load_textdomain() {
-
-	load_plugin_textdomain( 'sapphire-popups', false, plugin_dir_path( __FILE__ ) . 'languages/' );
-
-}
-add_action( 'plugins_loaded', 'sapphire_popups_load_textdomain' );
+final class SapphirePopup {
 
 
 
-/**
- * Include admin dependencies.
- *
- * @since 1.0.0
- */
-if ( is_admin() ) {
+	/**
+	 * Add core dependencies and hooks.
+	 * 
+	 * Load the dependencies, define the locale, and set the hooks for the admin area
+	 * and the public-facing side.
+	 * Create plugin page settings link.
+	 *
+	 * @since 1.1.0
+	 */
+	public function __construct() {
 
-	require_once plugin_dir_path( __FILE__ ) . 'admin/admin-page.php';
-	require_once plugin_dir_path( __FILE__ ) . 'admin/settings-register.php';
-	require_once plugin_dir_path( __FILE__ ) . 'admin/settings-callbacks.php';
+		if ( is_admin() ) {
+			$this->load_admin_dependencies();
+		}
 
-}
+		$this->load_dependencies();
 
-
-
-
-/**
- * Include admin and public dependencies.
- *
- * @since 1.0.0
- */
-require_once plugin_dir_path( __FILE__ ) . 'includes/core-functions.php';
-// Make sure this is outside of is_admin - will not allow posts to be saved!!
-require_once plugin_dir_path( __FILE__ ) . 'admin/post-types/register-custom-post-types.php';
+	}
 
 
 
-/**
- * Add a link to the settings page from the plugins page.
- *
- * Will be displayed after plugin in activated in the plugins page.
- *
- * @param array $links
- * @return array
- * @since 1.0.0
- */
-function sapphire_popups_add_settings_link( $links ) {
-		$settings_link = '<a href="admin.php?page=sapphire_popups_settings">' . esc_html__( 'Settings', 'sapphire_popups' ) . '</a>';
-		array_push( $links, $settings_link );
-		return $links;
-}
+	/**
+	 * Load text domain for languages translation.
+	 * 
+	 * Set as public because it's getting called from outside the class.
+	 *
+	 * @since 1.1.0
+	 */
+	public function set_locale() {
 
-$filter_name = "plugin_action_links_" . plugin_basename( __FILE__ );
-add_filter( $filter_name, 'sapphire_popups_add_settings_link' );
+		load_plugin_textdomain( 'sapphire-popups', false, plugin_dir_path( __FILE__ ) . 'languages/' );
+
+	}
+
+
+
+	/**
+	 * Include admin dependencies.
+	 * 
+	 * Called from $this->__construct inside is_admin().
+	 *
+	 * @since 1.1.0
+	 */
+	private function load_admin_dependencies() {
+
+		require_once plugin_dir_path( __FILE__ ) . 'admin/admin-page.php';
+		require_once plugin_dir_path( __FILE__ ) . 'admin/settings-register.php';
+		require_once plugin_dir_path( __FILE__ ) . 'admin/settings-callbacks.php';
+
+	}
+
+
+
+	/**
+	 * Include admin and public dependencies.
+	 * 
+	 * Called from $this->__construct.
+	 *
+	 * @since 1.1.0
+	 */
+	private function load_dependencies() {
+
+		require_once plugin_dir_path( __FILE__ ) . 'includes/core-functions.php';
+		// Make sure this is outside of is_admin - will not allow posts to be saved!!
+		require_once plugin_dir_path( __FILE__ ) . 'admin/post-types/register-custom-post-types.php';
+
+	}
+
+
+
+	/**
+	 * Add a link to the settings page from the plugins page.
+	 *
+	 * Will be displayed after plugin in activated in the plugins page.
+	 * 
+	 * Set as public because it's getting called from outside the class.
+	 *
+	 * @param array $links
+	 * @return array
+	 * @since 1.1.0
+	 */
+	public function add_settings_link( $links ) {
+
+			$settings_link = '<a href="admin.php?page=sapphire_popups_settings">' . esc_html__( 'Settings', 'sapphire_popups' ) . '</a>';
+			array_push( $links, $settings_link );
+			return $links;
+
+	}
+
+
+
+
+} // End class SapphirePopup
+
+$sapphirePopups = new SapphirePopup;
+add_action( 'plugins_loaded', [ $sapphirePopups, 'set_locale' ] );
+add_filter( "plugin_action_links_" . plugin_basename( __FILE__ ), [ $sapphirePopups, 'add_settings_link' ] );
