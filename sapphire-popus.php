@@ -5,7 +5,7 @@ Description: A simple yet powerful solution for popups.
 Plugin URI:  https://github.com/runningCoder81/sapphire-popups
 Author:      Bobby Lee
 Author URI:  https://therunningcoder.com/
-Version:     1.0.0
+Version:     1.0.1
 Text Domain: sapphire-popups
 Domain Path: /languages
 License:     GPL v2 or later
@@ -100,30 +100,3 @@ function sapphire_popups_add_settings_link( $links ) {
 
 $filter_name = "plugin_action_links_" . plugin_basename( __FILE__ );
 add_filter( $filter_name, 'sapphire_popups_add_settings_link' );
-
-
-
-/**
- * Add iFrame to allowed wp_kses_post tags
- *
- * @param array  $tags Allowed tags, attributes, and/or entities.
- * @param string $context Context to judge allowed tags by. Allowed values are 'post'.
- *
- * @return array
- */
-function custom_wpkses_post_tags( $tags, $context ) {
-
-	if ( 'post' === $context ) {
-		$tags['iframe'] = array(
-			'src'             => true,
-			'height'          => true,
-			'width'           => true,
-			'frameborder'     => true,
-			'allowfullscreen' => true,
-		);
-	}
-
-	return $tags;
-}
-
-add_filter( 'wp_kses_allowed_html', 'custom_wpkses_post_tags', 10, 2 );

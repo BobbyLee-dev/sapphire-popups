@@ -18,19 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 /**
- * Print/echo the dashboard about message.
- * 
- * @since 1.0.0
- */
-function sapphire_popups_callback_section_dashboard_about() {
-	
-	echo '<p>' . esc_html__( 'All about this plugin maybe some meta data...', 'sapphire-popups' ) . '</p>';
-
-}
-
-
-
-/**
  * Print/echo the Popup section message.
  *
  * @return void
