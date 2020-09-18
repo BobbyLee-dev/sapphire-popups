@@ -1,5 +1,5 @@
 /* 
-  Sapphire Popups - JavaScript. 
+	Sapphire Popups - JavaScript. 
 
 	Gets enqued from included/core-functions.php.
 	- sapphire_popups_add_popup_script().
@@ -31,7 +31,7 @@ if (sapphirePopupContent) {
 	
 	(function () {
 
-	/*----------  End Helper Functions  ----------*/
+	/*----------  Helper Functions  ----------*/
 		// Helper get element function
 		function get(selector) {
 			return document.querySelector(selector);
