@@ -5,7 +5,7 @@ Description: A simple yet powerful solution for popups.
 Plugin URI:  https://github.com/runningCoder81/sapphire-popups
 Author:      Bobby Lee
 Author URI:  https://therunningcoder.com/
-Version:     1.0.1
+Version:     1.2.0
 Text Domain: sapphire-popups
 Domain Path: /languages
 License:     GPL v2 or later
@@ -27,126 +27,56 @@ with this program. If not, visit: https://www.gnu.org/licenses/
 
 
 
-/**
- * Disable direct file access.
- *
- * Exit if file is called directly
- *
- * @since 1.0.0
- */
-if ( ! defined( 'ABSPATH' ) ) {
-
-	exit;
-
+// If this file is called directly, abort.
+if ( ! defined( 'WPINC' ) ) {
+	die;
 }
 
+/**
+ * Currently plugin version - https://semver.org
+ */
+define( 'SAPPHIRE_POPUPS_VERSION', '1.2.0' );
 
 /**
- * The core plugin class.
- *
- * This is used to define internationalization, admin-specific hooks, and
- * public-facing site hooks.
- *
- * @since      1.1.0
+ * The code that runs during plugin activation.
+ * This action is documented in includes/class-sapphire-popups-activator.php
  */
-final class SapphirePopup {
+// function activate_sapphire_popups() {
+// 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-sapphire-popups-activator.php';
+// 	Sapphire_Popups_Activator::activate();
+// }
 
+/**
+ * The code that runs during plugin deactivation.
+ * This action is documented in includes/class-sapphire-popups-deactivator.php
+ */
+// function deactivate_sapphire_popups() {
+// 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-sapphire-popups-deactivator.php';
+// 	Sapphire_Popups_Deactivator::deactivate();
+// }
 
+// register_activation_hook( __FILE__, 'activate_sapphire_popups' );
+// register_deactivation_hook( __FILE__, 'deactivate_sapphire_popups' );
 
-	/**
-	 * Add core dependencies and hooks.
-	 * 
-	 * Load the dependencies, define the locale, and set the hooks for the admin area
-	 * and the public-facing side.
-	 * Create plugin page settings link.
-	 *
-	 * @since 1.1.0
-	 */
-	public function __construct() {
+/**
+ * The core plugin class that is used to define internationalization,
+ * admin-specific hooks, and public-facing site hooks.
+ */
+require plugin_dir_path( __FILE__ ) . 'includes/class-sapphire-popups.php';
 
-		if ( is_admin() ) {
-			$this->load_admin_dependencies();
-		}
+/**
+ * Begins execution of the plugin.
+ *
+ * Since everything within the plugin is registered via hooks,
+ * then kicking off the plugin from this point in the file does
+ * not affect the page life cycle.
+ *
+ * @since    1.2.0
+ */
+function run_sapphire_popups() {
 
-		$this->load_dependencies();
+	$plugin = new Sapphire_Popups();
+	$plugin->run();
 
-	}
-
-
-
-	/**
-	 * Load text domain for languages translation.
-	 * 
-	 * Set as public because it's getting called from outside the class.
-	 *
-	 * @since 1.1.0
-	 */
-	public function set_locale() {
-
-		load_plugin_textdomain( 'sapphire-popups', false, plugin_dir_path( __FILE__ ) . 'languages/' );
-
-	}
-
-
-
-	/**
-	 * Include admin dependencies.
-	 * 
-	 * Called from $this->__construct inside is_admin().
-	 *
-	 * @since 1.1.0
-	 */
-	private function load_admin_dependencies() {
-
-		require_once plugin_dir_path( __FILE__ ) . 'admin/admin-page.php';
-		require_once plugin_dir_path( __FILE__ ) . 'admin/settings-register.php';
-		require_once plugin_dir_path( __FILE__ ) . 'admin/settings-callbacks.php';
-
-	}
-
-
-
-	/**
-	 * Include admin and public dependencies.
-	 * 
-	 * Called from $this->__construct.
-	 *
-	 * @since 1.1.0
-	 */
-	private function load_dependencies() {
-
-		require_once plugin_dir_path( __FILE__ ) . 'includes/core-functions.php';
-		// Make sure this is outside of is_admin - will not allow posts to be saved!!
-		require_once plugin_dir_path( __FILE__ ) . 'admin/post-types/register-custom-post-types.php';
-
-	}
-
-
-
-	/**
-	 * Add a link to the settings page from the plugins page.
-	 *
-	 * Will be displayed after plugin in activated in the plugins page.
-	 * 
-	 * Set as public because it's getting called from outside the class.
-	 *
-	 * @param array $links
-	 * @return array
-	 * @since 1.1.0
-	 */
-	public function add_settings_link( $links ) {
-
-			$settings_link = '<a href="admin.php?page=sapphire_popups_settings">' . esc_html__( 'Settings', 'sapphire_popups' ) . '</a>';
-			array_push( $links, $settings_link );
-			return $links;
-
-	}
-
-
-
-
-} // End class SapphirePopup
-
-$sapphirePopups = new SapphirePopup;
-add_action( 'plugins_loaded', [ $sapphirePopups, 'set_locale' ] );
-add_filter( "plugin_action_links_" . plugin_basename( __FILE__ ), [ $sapphirePopups, 'add_settings_link' ] );
+}
+run_sapphire_popups();

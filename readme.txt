@@ -3,11 +3,11 @@ Contributors: runningCoder81
 Tags:         Popups, easy to use, no cookies, classic editor, Gutenberg
 Tested up to: 5.5
 Requires PHP: 5.6
-Stable tag:   trunk
+Stable tag:   1.1.0
 Plugin URI:   https://github.com/runningCoder81/sapphire-popups
 Author:       Bobby Lee
 Author URI:   https://therunningcoder.com/
-Version:      1.1
+Version:      1.1.0
 Text Domain:  sapphire-popups
 Domain Path:  /languages
 License:      GPLv3
