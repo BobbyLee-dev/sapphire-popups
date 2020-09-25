@@ -39,6 +39,8 @@ class Sapphire_Popups {
 	 */
 	protected $loader;
 
+
+
 	/**
 	 * The unique identifier of this plugin.
 	 *
@@ -48,6 +50,8 @@ class Sapphire_Popups {
 	 */
 	protected $plugin_name;
 
+
+
 	/**
 	 * The current version of the plugin.
 	 *
@@ -56,6 +60,8 @@ class Sapphire_Popups {
 	 * @var      string    $version    The current version of the plugin.
 	 */
 	protected $version;
+
+
 
 	/**
 	 * Define the core functionality of the plugin.
@@ -80,6 +86,8 @@ class Sapphire_Popups {
 		$this->define_public_hooks();
 
 	}
+
+
 
 	/**
 	 * Load the required dependencies for this plugin.
@@ -126,6 +134,8 @@ class Sapphire_Popups {
 
 	}
 
+
+
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
@@ -142,6 +152,8 @@ class Sapphire_Popups {
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
 	}
+
+
 
 	/**
 	 * Register all of the hooks related to the admin area functionality
@@ -160,10 +172,11 @@ class Sapphire_Popups {
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_fields' );
 		$this->loader->add_action( 'init', $plugin_admin, 'new_cpt_popup' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		
 
+		
 	}
+
+
 
 	/**
 	 * Register all of the hooks related to the public-facing functionality
@@ -176,10 +189,11 @@ class Sapphire_Popups {
 
 		$plugin_public = new Sapphire_Popups_Public( $this->get_plugin_name(), $this->get_version() );
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'create_frontend_popup' );
 
 	}
+
+
 
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
@@ -189,6 +203,8 @@ class Sapphire_Popups {
 	public function run() {
 		$this->loader->run();
 	}
+
+
 
 	/**
 	 * The name of the plugin used to uniquely identify it within the context of
@@ -201,6 +217,8 @@ class Sapphire_Popups {
 		return $this->plugin_name;
 	}
 
+
+
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
@@ -210,6 +228,8 @@ class Sapphire_Popups {
 	public function get_loader() {
 		return $this->loader;
 	}
+
+
 
 	/**
 	 * Retrieve the version number of the plugin.

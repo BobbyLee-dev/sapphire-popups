@@ -8,8 +8,8 @@ Author URI:  https://therunningcoder.com/
 Version:     1.2.0
 Text Domain: sapphire-popups
 Domain Path: /languages
-License:     GPL v2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.txt
+License:     GPL v3
+License URI: https://www.gnu.org/licenses/gpl-3.0.txt
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License

@@ -1,3 +1,10 @@
+## [1.2.0] - 2020-09-24
+
+### Changed
+
+- Re-wrote plugin in OOP architecture using the WordPress Plugin Boilerplate.
+- All functionality is the same.
+
 ## [1.1.0] - 2020-09-16
 
 ### Changed

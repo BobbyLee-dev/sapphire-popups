@@ -286,7 +286,7 @@ class Sapphire_Popups_Admin {
 	 */
 	public function field_select( $args ) {
 
-		$dbOptions = get_option( 'sapphire_popups_options', [ $args['id'] => $args['default'] ] );
+		$dbOptions = get_option( 'sapphire-popups-options', [ $args['id'] => $args['default'] ] );
 	
 		$id      = isset( $args['id'] )    	 ? $args['id']      : '';
 		$isCpt   = isset( $args['cpt'] )     ? $args['cpt']     : '';
@@ -306,7 +306,7 @@ class Sapphire_Popups_Admin {
 			$select_options = array('no_options' => 'No Options');
 		}
 		
-		echo '<select id="sapphire_popups_options_'. $id .'" name="sapphire_popups_options['. $id .']">';
+		echo '<select id="sapphire-popups-options-'. $id .'" name="sapphire-popups-options['. $id .']">';
 		
 		foreach ( $select_options as $value => $option ) {
 			
@@ -316,7 +316,7 @@ class Sapphire_Popups_Admin {
 			
 		}
 		
-		echo '</select> <label for="sapphire_popups_options_'. $id .'">'. wp_kses_post( __( $label, 'sapphire-popups' ) ) .'</label>';
+		echo '</select> <label for="sapphire-popups-options-'. $id .'">'. wp_kses_post( __( $label, 'sapphire-popups' ) ) .'</label>';
 
 	} // field_select()
 
@@ -332,15 +332,15 @@ class Sapphire_Popups_Admin {
 	 */
 	public function field_checkbox( $args ) {
 
-		$options = get_option( 'sapphire_popups_options', [$args['id'] => $args['default']] );
+		$options = get_option( 'sapphire-popups-options', [$args['id'] => $args['default']] );
 		
 		$id    = isset( $args['id'] )    ? $args['id']    : '';
 		$label = isset( $args['label'] ) ? $args['label'] : '';
 		
 		$checked = isset( $options[$id] ) ? checked( $options[$id], 1, false ) : '';
 		
-		echo '<input id="sapphire_popups_options_'. $id .'" name="sapphire_popups_options['. $id .']" type="checkbox" value="1"'. $checked .'> ';
-		echo '<label for="sapphire_popups_options_'. $id .'">'. $label .'</label>';
+		echo '<input id="sapphire-popups-options-'. $id .'" name="sapphire-popups-options['. $id .']" type="checkbox" value="1"'. $checked .'> ';
+		echo '<label for="sapphire-popups-options-'. $id .'">'. $label .'</label>';
 		
 	} // field_checkbox()
 
@@ -439,9 +439,6 @@ class Sapphire_Popups_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/sapphire-popups-admin.js', array(), $this->version, false );
 
 	}
-
-
-
 
 
 }

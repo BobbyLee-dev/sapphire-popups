@@ -1,13 +1,13 @@
 === Sapphire Popups ===
 Contributors: runningCoder81
 Tags:         Popups, easy to use, no cookies, classic editor, Gutenberg
-Tested up to: 5.5
+Tested up to: 5.5.1
 Requires PHP: 5.6
-Stable tag:   1.1.0
+Stable tag:   1.2.0
 Plugin URI:   https://github.com/runningCoder81/sapphire-popups
 Author:       Bobby Lee
 Author URI:   https://therunningcoder.com/
-Version:      1.1.0
+Version:      1.2.0
 Text Domain:  sapphire-popups
 Domain Path:  /languages
 License:      GPLv3
@@ -55,6 +55,11 @@ The Default Behavior will display the popup on every page load.
 2. Managing popups is easy.
 
 == Changelog ==
+
+= 1.2.0: - 2020-09-24 =
+
+* Re-wrote plugin in OOP architecture using the WordPress Plugin Boilerplate. 
+- All functionality is the same.
 
 = 1.1.0: - 2020-09-16 =
 

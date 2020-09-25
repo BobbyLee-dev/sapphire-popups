@@ -22,6 +22,7 @@
  */
 class Sapphire_Popups_Public {
 
+
 	/**
 	 * The ID of this plugin.
 	 *
@@ -31,6 +32,8 @@ class Sapphire_Popups_Public {
 	 */
 	private $plugin_name;
 
+
+
 	/**
 	 * The version of this plugin.
 	 *
@@ -39,6 +42,8 @@ class Sapphire_Popups_Public {
 	 * @var      string    $version    The current version of this plugin.
 	 */
 	private $version;
+
+
 
 	/**
 	 * Initialize the class and set its properties.
@@ -54,49 +59,44 @@ class Sapphire_Popups_Public {
 
 	}
 
+
+
+
 	/**
-	 * Register the stylesheets for the public-facing side of the site.
+	 * Enqueue css and js if a popup has been selected.
 	 *
 	 * @since    1.2.0
 	 */
-	public function enqueue_styles() {
+	public function create_frontend_popup() {
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Sapphire_Popups_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Sapphire_Popups_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+		// Get the plugin options from the DB.
+		$options = get_option( 'sapphire-popups-options', '' );
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/sapphire-popups-public.css', array(), $this->version, 'all' );
+		// If a popup is selected and not set to default.
+		if ( isset( $options['select_popup'] ) && ! empty( $options['select_popup'] ) && 'none_selected' != $options['select_popup'] ) {
+			
+			// Get the popup from the custom post type - popups.
+			$popup = get_page_by_title( $options['select_popup'], OBJECT, 'sapphire_popups' );
+			$popupContent = __( apply_filters( 'the_content',  $popup->post_content ), 'sapphire-popups' );
 
-	}
+			// Get the popup behavior from the DB.
+			$popupBehavior = isset( $options['select_popup_behavior'] ) ? esc_html__( wp_kses_post($options['select_popup_behavior']), 'sapphire-popups' ) : '';
 
-	/**
-	 * Register the JavaScript for the public-facing side of the site.
-	 *
-	 * @since    1.2.0
-	 */
-	public function enqueue_scripts() {
+			// See if the title will be excluded or included - default is included.
+			$popupTitle = isset( $options['exclude_popup_title'] ) ? '' : '<h2 class="popup-title">' . get_the_title( $popup->ID ) . '</h2>';
+			// $popupID = title no spaces lowercase will use for cookie
 
-		/**
-		 * This function is provided for demonstration purposes only.
-		 *
-		 * An instance of this class should be passed to the run() function
-		 * defined in Sapphire_Popups_Loader as all of the hooks are defined
-		 * in that particular class.
-		 *
-		 * The Sapphire_Popups_Loader will then create the relationship
-		 * between the defined hooks and the functions defined in this
-		 * class.
-		 */
+			// data-sapphirePopupID... must remain one space away from the opening div - being taken out with js via this postion.
+			$popupMarkup = '<div data-sapphirePopupID="sapphirePopup-' . $popup->ID . '" data-sapphirePopupBehavior="' . $popupBehavior . '" class="sapphire-popup-content">' . $popupTitle . $popupContent . '<button class="close-sapphire-popup" aria-label="Close Button"></button></div>';
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/sapphire-popups-public.js', array( '' ), $this->version, false );
+			echo '<script>const sapphirePopupContent = ' . json_encode( $popupMarkup ) . '</script>';
+		
+			wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/sapphire-popup.css', array(), null, 'screen' );
+			wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/sapphire-popup.js', array(), null, true );
+
+		}
+
+		
 
 	}
 
