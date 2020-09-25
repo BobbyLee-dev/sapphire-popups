@@ -56,19 +56,19 @@
 }
 
 .sapphire-popup .close-sapphire-popup:after {
-    content: '';
-    height: 24px;
-    border-left: 2px solid #fff;
-    position: absolute;
-    transform: rotate(45deg);
-    left: 22px;
+		content: '';
+		height: 24px;
+		border-left: 2px solid #fff;
+		position: absolute;
+		transform: rotate(45deg);
+		left: 22px;
 }
 
 .sapphire-popup .close-sapphire-popup:before {
-    content: '';
-    height: 24px;
-    border-left: 2px solid #fff;
-    position: absolute;
-    transform: rotate(-45deg);
-    left: 22px;
+		content: '';
+		height: 24px;
+		border-left: 2px solid #fff;
+		position: absolute;
+		transform: rotate(-45deg);
+		left: 22px;
 }
