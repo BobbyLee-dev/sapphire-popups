@@ -1,3 +1,9 @@
+## [1.2.3] - 2020-09-25
+
+### Fixed
+
+- Added missing files.
+
 ## [1.2.0] - 2020-09-24
 
 ### Changed
