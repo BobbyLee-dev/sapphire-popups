@@ -8,9 +8,9 @@
 	convertWarningsToExceptions="true"
 	>
 	<testsuites>
-		<testsuite>
+		<testsuite name="Sapphire Popups Test Suite">
 			<directory prefix="test-" suffix=".php">./tests/</directory>
-			<exclude>./tests/test-sample.php</exclude>
+			<!-- <exclude>./tests/test-sample.php</exclude> -->
 		</testsuite>
 	</testsuites>
 </phpunit>
