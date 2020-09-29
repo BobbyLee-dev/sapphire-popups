@@ -13,6 +13,7 @@
  * @subpackage Sapphire_Popups/includes
  */
 
+ 
 /**
  * Define the internationalization functionality.
  *
@@ -41,7 +42,5 @@ class Sapphire_Popups_i18n {
 		);
 
 	}
-
-
 
 }

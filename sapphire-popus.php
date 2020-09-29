@@ -32,37 +32,22 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
+
+
 /**
  * Currently plugin version - https://semver.org
  */
 define( 'SAPPHIRE_POPUPS_VERSION', '1.3.0' );
 
-/**
- * The code that runs during plugin activation.
- * This action is documented in includes/class-sapphire-popups-activator.php
- */
-// function activate_sapphire_popups() {
-// 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-sapphire-popups-activator.php';
-// 	Sapphire_Popups_Activator::activate();
-// }
 
-/**
- * The code that runs during plugin deactivation.
- * This action is documented in includes/class-sapphire-popups-deactivator.php
- */
-// function deactivate_sapphire_popups() {
-// 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-sapphire-popups-deactivator.php';
-// 	Sapphire_Popups_Deactivator::deactivate();
-// }
-
-// register_activation_hook( __FILE__, 'activate_sapphire_popups' );
-// register_deactivation_hook( __FILE__, 'deactivate_sapphire_popups' );
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
 require plugin_dir_path( __FILE__ ) . 'includes/class-sapphire-popups.php';
+
+
 
 /**
  * Begins execution of the plugin.

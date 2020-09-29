@@ -233,9 +233,6 @@ class Sapphire_Popups_Admin {
 				'default' => false
 			)
 		);
-
-
-
 	} // register_fields()
 
 
@@ -248,7 +245,6 @@ class Sapphire_Popups_Admin {
 	 * @since  1.0.0
 	 */
 	public function sapphire_popups_options_select( $id ) {
-
 		
 		if( isset( $id ) ) {
 			
