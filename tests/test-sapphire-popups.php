@@ -1,7 +1,6 @@
 <?php 
 
 class Sapphire_Popups_VerifyTest extends WP_UnitTestCase {
-		
 	public function setUp() {
 				parent::setUp();
 
@@ -15,5 +14,4 @@ class Sapphire_Popups_VerifyTest extends WP_UnitTestCase {
 
 			$this->assertEquals($expected, $plugin_name);
 	}
-
 }
