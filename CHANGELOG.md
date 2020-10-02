@@ -3,7 +3,7 @@
 ### Removed.
 - Cleaned up and removed unnecessary files due to switch of OOP architecture.
   
-- ## [1.3.0] - 2020-09-25
+## [1.3.0] - 2020-09-25
 
 ### Fixed
 
@@ -27,7 +27,7 @@
 ### Fixed
 
 - Added the_content filter on popup content so that it can be treated the same way as a normal post.
-- The issue was that <p> tags were not being added so all lines ended up on one line. The wpautop filter which added <p> tags is one of the filters used in the_content so I just used that.
+- The issue was that p tags were not being added so all lines ended up on one line. The wpautop filter which added p tags is one of the filters used in the_content so I just used that.
 - I also used wp_kses_post for extra sanitization when pulling from the DB but this removes custom HTML. I found that get_post_by_title() uses get_post() which uses sanitize_post() so this is happening by default.
 - includes > core-functions.php > sapphire_popups_add_popup_script.
 - https://github.com/runningCoder81/sapphire-popups/issues/1
