@@ -1,4 +1,9 @@
-## [1.3.0] - 2020-09-25
+## [1.3.1]: - 2020-10-01
+
+### Removed.
+- Cleaned up and removed unnecessary files due to switch of OOP architecture.
+  
+- ## [1.3.0] - 2020-09-25
 
 ### Fixed
 

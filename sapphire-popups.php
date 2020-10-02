@@ -5,7 +5,7 @@ Description: A simple yet powerful solution for popups.
 Plugin URI:  https://github.com/runningCoder81/sapphire-popups
 Author:      Bobby Lee
 Author URI:  https://therunningcoder.com/
-Version:     1.3.0
+Version:     1.3.1
 Text Domain: sapphire-popups
 Domain Path: /languages
 License:     GPL v3
@@ -37,7 +37,7 @@ if ( ! defined( 'WPINC' ) ) {
 /**
  * Currently plugin version - https://semver.org
  */
-define( 'SAPPHIRE_POPUPS_VERSION', '1.3.0' );
+define( 'SAPPHIRE_POPUPS_VERSION', '1.3.1' );
 
 
 
