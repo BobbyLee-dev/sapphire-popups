@@ -6,7 +6,7 @@
 
 👋 Feel free to download and use the code from this repo or [Download Sapphire Popups](https://wordpress.org/plugins/sapphire-popups/) on WordPress.org.
 
-![WordPress version](https://img.shields.io/badge/version-1.2.0-blue)  
+![WordPress version](https://img.shields.io/badge/version-1.3.1-blue)  
 
 This repo is the central location for the development of Sapphire Popups. 
 
