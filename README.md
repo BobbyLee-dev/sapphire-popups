@@ -21,7 +21,7 @@ Sapphire Popups allow you to easily add popups and set the behavior of how the p
 * If a popup is updated it will be displayed again, even if the behavior has not expired.
 * Remove popup title option.
 * Does not use cookies.
-* More features coming soon!!
+* More features coming soon!!!
 
 <h2>Behavior selections:</h2>
 
