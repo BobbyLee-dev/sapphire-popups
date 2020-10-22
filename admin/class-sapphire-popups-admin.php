@@ -410,4 +410,70 @@ class Sapphire_Popups_Admin {
 	}
 
 
+
+	/**
+	 * Register Admin Endpoints for the WP Rest API
+	 * 
+	 * @since 1.3.1
+	 */
+	public function setup_admin_rest_endpoints() {
+
+		$version = '1';
+		$namespace = $this->plugin_name . '/v' . $version;
+		$endpoint = '/admin/';
+
+		register_rest_route( 
+			$namespace, 
+			$endpoint, 
+			array(
+				array(
+						'methods'               => \WP_REST_Server::READABLE,
+						'callback'              => array( $this, 'get_popup' ),
+						'permission_callback'   => array( $this, 'admin_permissions_check' ),
+						'args'                  => array(),
+				),
+		) );
+
+	}
+
+
+
+	/**
+	 * Get Example
+	 *
+	 * @param WP_REST_Request $request Full data about the request.
+	 * @return WP_Error|WP_REST_Request
+	 */
+	public function get_popup( $request ) {
+			$example_option = get_option( 'sapphire-popups-options' );
+		
+			// Don't return false if there is no option
+			if ( ! $example_option ) {
+					return new \WP_REST_Response( array(
+							'success' => true,
+							'value' => ''
+					), 200 );
+			}
+
+			return new \WP_REST_Response( array(
+					'success' => true,
+					'value' => $example_option
+			), 200 );
+	}
+		
+
+
+	/**
+	 * Check if a given request has access to update a setting
+	 *
+	 * @param WP_REST_Request $request Full data about the request.
+	 * @return WP_Error|bool
+	 */
+	public function admin_permissions_check(  ) {
+		
+			return current_user_can( 'manage_options' );
+			
+	}
+
+
 }

@@ -166,6 +166,7 @@ class Sapphire_Popups {
 
 		$plugin_admin = new Sapphire_Popups_Admin( $this->get_plugin_name(), $this->get_version() );
 
+		$this->loader->add_action( 'rest_api_init', $plugin_admin, 'setup_admin_rest_endpoints' );
 		$this->loader->add_action( 'admin_menu', $plugin_admin, 'add_menu' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_settings' );
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_sections' );
