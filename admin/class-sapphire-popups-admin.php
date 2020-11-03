@@ -414,6 +414,8 @@ class Sapphire_Popups_Admin {
 	/**
 	 * Register Admin Endpoints for the WP Rest API
 	 * 
+	 * /wp-json/sapphire-popups/v1/admin
+	 * 
 	 * @since 1.3.1
 	 */
 	public function setup_admin_rest_endpoints() {
@@ -429,7 +431,7 @@ class Sapphire_Popups_Admin {
 				array(
 						'methods'               => \WP_REST_Server::READABLE,
 						'callback'              => array( $this, 'get_popup' ),
-						'permission_callback'   => array( $this, 'admin_permissions_check' ),
+						// 'permission_callback'   => array( $this, 'admin_permissions_check' ),
 						'args'                  => array(),
 				),
 		) );
@@ -474,6 +476,24 @@ class Sapphire_Popups_Admin {
 			return current_user_can( 'manage_options' );
 			
 	}
+
+
+
+	/**
+	 * Add a link to the settings page from the plugins page.
+	 *
+	 * Will be displayed after plugin in activated in the plugins page.
+	 *
+	 * @param array $links
+	 * @return array
+	 * @since 1.3.2
+	 */
+	function add_settings_link( $links ) {
+			$settings_link = '<a href="admin.php?page=sapphire-popups-settings">' . esc_html__( 'Settings', 'sapphire-popups' ) . '</a>';
+			array_push( $links, $settings_link );
+			return $links;
+	}
+
 
 
 }

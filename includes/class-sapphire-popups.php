@@ -173,6 +173,12 @@ class Sapphire_Popups {
 		$this->loader->add_action( 'admin_init', $plugin_admin, 'register_fields' );
 		$this->loader->add_action( 'init', $plugin_admin, 'sapphire_cpts' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
+		
+		$this->loader->add_filter( "plugin_action_links_" . 'sapphire-popups/sapphire-popups.php', $plugin_admin, 'add_settings_link' );
+		
+
+
+	
 
 		
 	}
