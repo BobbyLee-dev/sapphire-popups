@@ -56,7 +56,7 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-sapphire-popups.php';
  * then kicking off the plugin from this point in the file does
  * not affect the page life cycle.
  *
- * @since    1.2.0
+ * since    1.2.0
  */
 function run_sapphire_popups() {
 

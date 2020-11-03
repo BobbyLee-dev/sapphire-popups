@@ -7,7 +7,7 @@
  * public-facing side of the site and the admin area.
  *
  * @link       https://therunningcoder.com/
- * @since      1.2.0
+ * since      1.2.0
  *
  * @package    Sapphire_Popups
  * @subpackage Sapphire_Popups/includes
@@ -22,7 +22,7 @@
  * Also maintains the unique identifier of this plugin as well as the current
  * version of the plugin.
  *
- * @since      1.2.0
+ * since      1.2.0
  * @package    Sapphire_Popups
  * @subpackage Sapphire_Popups/includes
  * @author     Bobby Lee
@@ -33,7 +33,7 @@ class Sapphire_Popups {
 	 * The loader that's responsible for maintaining and registering all hooks that power
 	 * the plugin.
 	 *
-	 * @since    1.2.0
+	 * since    1.2.0
 	 * @access   protected
 	 * @var      Sapphire_Popups_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
@@ -44,7 +44,7 @@ class Sapphire_Popups {
 	/**
 	 * The unique identifier of this plugin.
 	 *
-	 * @since    1.2.0
+	 * since    1.2.0
 	 * @access   protected
 	 * @var      string    $plugin_name    The string used to uniquely identify this plugin.
 	 */
@@ -55,7 +55,7 @@ class Sapphire_Popups {
 	/**
 	 * The current version of the plugin.
 	 *
-	 * @since    1.2.0
+	 * since    1.2.0
 	 * @access   protected
 	 * @var      string    $version    The current version of the plugin.
 	 */
@@ -70,7 +70,7 @@ class Sapphire_Popups {
 	 * Load the dependencies, define the locale, and set the hooks for the admin area and
 	 * the public-facing side of the site.
 	 *
-	 * @since    1.2.0
+	 * since    1.2.0
 	 */
 	public function __construct() {
 		if ( defined( 'SAPPHIRE_POPUPS_VERSION' ) ) {
@@ -102,7 +102,7 @@ class Sapphire_Popups {
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
 	 *
-	 * @since    1.2.0
+	 * since    1.2.0
 	 * @access   private
 	 */
 	private function load_dependencies() {
@@ -142,7 +142,7 @@ class Sapphire_Popups {
 	 * Uses the Sapphire_Popups_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
-	 * @since    1.2.0
+	 * since    1.2.0
 	 * @access   private
 	 */
 	private function set_locale() {
@@ -159,7 +159,7 @@ class Sapphire_Popups {
 	 * Register all of the hooks related to the admin area functionality
 	 * of the plugin.
 	 *
-	 * @since    1.2.0
+	 * since    1.2.0
 	 * @access   private
 	 */
 	private function define_admin_hooks() {
@@ -189,7 +189,7 @@ class Sapphire_Popups {
 	 * Register all of the hooks related to the public-facing functionality
 	 * of the plugin.
 	 *
-	 * @since    1.2.0
+	 * since    1.2.0
 	 * @access   private
 	 */
 	private function define_public_hooks() {
@@ -205,7 +205,7 @@ class Sapphire_Popups {
 	/**
 	 * Run the loader to execute all of the hooks with WordPress.
 	 *
-	 * @since    1.2.0
+	 * since    1.2.0
 	 */
 	public function run() {
 		$this->loader->run();
@@ -217,7 +217,7 @@ class Sapphire_Popups {
 	 * The name of the plugin used to uniquely identify it within the context of
 	 * WordPress and to define internationalization functionality.
 	 *
-	 * @since     1.2.0
+	 * since     1.2.0
 	 * @return    string    The name of the plugin.
 	 */
 	public function get_plugin_name() {
@@ -229,7 +229,7 @@ class Sapphire_Popups {
 	/**
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
-	 * @since     1.2.0
+	 * since     1.2.0
 	 * @return    Sapphire_Popups_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
@@ -241,7 +241,7 @@ class Sapphire_Popups {
 	/**
 	 * Retrieve the version number of the plugin.
 	 *
-	 * @since     1.2.0
+	 * since     1.2.0
 	 * @return    string    The version number of the plugin.
 	 */
 	public function get_version() {

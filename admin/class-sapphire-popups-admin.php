@@ -11,7 +11,7 @@
  * @package    Sapphire_Popups
  * @subpackage Sapphire_Popups/admin
  * @author     Bobby Lee
- * @since      1.2.0
+ * since      1.2.0
  */
 class Sapphire_Popups_Admin {
 
@@ -20,7 +20,7 @@ class Sapphire_Popups_Admin {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since  1.2.0
+	 * since  1.2.0
 	 * @access private
 	 * @var    string
 	 */
@@ -31,7 +31,7 @@ class Sapphire_Popups_Admin {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since  1.2.0
+	 * since  1.2.0
 	 * @access private
 	 * @var    string
 	 */
@@ -42,7 +42,7 @@ class Sapphire_Popups_Admin {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since 1.2.0
+	 * since 1.2.0
 	 * @param string $plugin_name  The name of this plugin.
 	 * @param string $version      The version of this plugin.
 	 */
@@ -59,7 +59,7 @@ class Sapphire_Popups_Admin {
 	 * Adds a settings page.
 	 *
 	 * @link 	 https://codex.wordpress.org/Administration_Menus
-	 * @since  1.0.0
+	 * since  1.0.0
 	 * @return void
 	 */
 	public function add_menu() {
@@ -98,7 +98,7 @@ class Sapphire_Popups_Admin {
 	/**
 	 * Creates the options page
 	 *
-	 * @since 		1.2.0
+	 * since 		1.2.0
 	 * @return 		void
 	 */
 	public function page_options() {
@@ -112,7 +112,7 @@ class Sapphire_Popups_Admin {
 	/**
 	 * Register settings for the settings page.
 	 *
-	 * @since 1.0.0
+	 * since 1.0.0
 	 */
 	public function register_settings() {
 
@@ -131,7 +131,7 @@ class Sapphire_Popups_Admin {
 	/**
 	 * Sanitize/validate plugin settings.
 	 *
-	 * @since 1.0.0
+	 * since 1.0.0
 	 */
 	// private function validate_options( $type, $data ) {
 
@@ -142,7 +142,7 @@ class Sapphire_Popups_Admin {
 	/**
 	 * Register sections for the settings page.
 	 *
-	 * @since 1.0.0
+	 * since 1.0.0
 	 */
 	public function register_sections() {
 
@@ -162,7 +162,7 @@ class Sapphire_Popups_Admin {
 	/**
 	 * Creates a settings section
 	 *
-	 * @since  1.0.0
+	 * since  1.0.0
 	 * @param  array 
 	 * @return mixed The settings section
 	 */
@@ -177,7 +177,7 @@ class Sapphire_Popups_Admin {
 	/**
 	 * Registers settings fields with WordPress
 	 * 
-	 * @since 1.2.0
+	 * since 1.2.0
 	 */
 	public function register_fields() {
 
@@ -242,7 +242,7 @@ class Sapphire_Popups_Admin {
 	 * 
 	 * @param  string $id ID of the field that options will be added.
 	 * @return array
-	 * @since  1.0.0
+	 * since  1.0.0
 	 */
 	public function sapphire_popups_options_select( $id ) {
 		
@@ -278,7 +278,7 @@ class Sapphire_Popups_Admin {
 	 *
 	 * @param array $args
 	 * @return      string
-	 * @since       1.0.0
+	 * since       1.0.0
 	 */
 	public function field_select( $args ) {
 
@@ -324,7 +324,7 @@ class Sapphire_Popups_Admin {
 	 * Echos checkbox field to settings page.
 	 *
 	 * @param array $args
-	 * @since 1.0.0
+	 * since 1.0.0
 	 */
 	public function field_checkbox( $args ) {
 
@@ -347,7 +347,7 @@ class Sapphire_Popups_Admin {
 	 * 
 	 * Does not create front end pages.
 	 *
-	 * @since 	1.0.0
+	 * since 	1.0.0
 	 * @access 	public
 	 * @uses 	register_post_type()
 	 */
@@ -363,7 +363,7 @@ class Sapphire_Popups_Admin {
 	/**
 	 * Register the stylesheets for the admin area.
 	 *
-	 * @since    1.2.0
+	 * since    1.2.0
 	 */
 	public function enqueue_styles() {
 
@@ -389,7 +389,7 @@ class Sapphire_Popups_Admin {
 	/**
 	 * Register the JavaScript for the admin area.
 	 *
-	 * @since    1.2.0
+	 * since    1.2.0
 	 */
 	public function enqueue_scripts() {
 
@@ -416,7 +416,7 @@ class Sapphire_Popups_Admin {
 	 * 
 	 * /wp-json/sapphire-popups/v1/admin
 	 * 
-	 * @since 1.3.1
+	 * since 1.3.1
 	 */
 	public function setup_admin_rest_endpoints() {
 
@@ -486,7 +486,7 @@ class Sapphire_Popups_Admin {
 	 *
 	 * @param array $links
 	 * @return array
-	 * @since 1.3.2
+	 * since 1.3.2
 	 */
 	function add_settings_link( $links ) {
 			$settings_link = '<a href="admin.php?page=sapphire-popups-settings">' . esc_html__( 'Settings', 'sapphire-popups' ) . '</a>';

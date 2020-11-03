@@ -14,7 +14,7 @@
  * - Repeat things for multisite. Once for a single site in the network, once sitewide.
  *
  * @link       https://therunningcoder.com/
- * @since      1.0.0
+ * since      1.0.0
  *
  * @package    Sapphire_Popups
  */
@@ -28,6 +28,6 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 /**
  * Remove plugin options from database when plugin in uninstalled via the Plugins screen.
  *
- * @since 1.0.0
+ * since 1.0.0
  */
 delete_option( 'sapphire-popups-options' );

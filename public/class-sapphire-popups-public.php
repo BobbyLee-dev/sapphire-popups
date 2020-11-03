@@ -4,7 +4,7 @@
  * The public-facing functionality of the plugin.
  *
  * @link       https://therunningcoder.com/
- * @since      1.2.0
+ * since      1.2.0
  *
  * @package    Sapphire_Popups
  * @subpackage Sapphire_Popups/public
@@ -26,7 +26,7 @@ class Sapphire_Popups_Public {
 	/**
 	 * The ID of this plugin.
 	 *
-	 * @since    1.2.0
+	 * since    1.2.0
 	 * @access   private
 	 * @var      string    $plugin_name    The ID of this plugin.
 	 */
@@ -37,7 +37,7 @@ class Sapphire_Popups_Public {
 	/**
 	 * The version of this plugin.
 	 *
-	 * @since    1.2.0
+	 * since    1.2.0
 	 * @access   private
 	 * @var      string    $version    The current version of this plugin.
 	 */
@@ -48,7 +48,7 @@ class Sapphire_Popups_Public {
 	/**
 	 * Initialize the class and set its properties.
 	 *
-	 * @since    1.2.0
+	 * since    1.2.0
 	 * @param      string    $plugin_name       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
@@ -65,7 +65,7 @@ class Sapphire_Popups_Public {
 	/**
 	 * Enqueue css and js if a popup has been selected.
 	 *
-	 * @since    1.2.0
+	 * since    1.2.0
 	 */
 	public function create_frontend_popup() {
 
